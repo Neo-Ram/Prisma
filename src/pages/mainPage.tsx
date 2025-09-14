@@ -1,8 +1,16 @@
+import Carousel from "../components/CarouselComponent";
 
-function mainPage() {
+function MainPage() {
   return (
-    <div><h1>Main ola</h1></div>
-  )
+    <>
+      <Carousel />
+      <div> <h1>Un proyecto de tesis</h1>
+      <p>Este proyecto se trata de una libreria de componentes para que los desarrolladores piensen en los usarios con 
+        distintas dificultades visuales y puedan crear aplicaciones web mas accesibles.
+      </p>
+      </div>
+    </>
+  );
 }
 
-export default mainPage
+export default MainPage;

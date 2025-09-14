@@ -1,3 +1,5 @@
+import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css'; 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'

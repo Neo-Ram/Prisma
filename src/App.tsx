@@ -5,13 +5,14 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import MainPage from "./pages/mainPage";
-
+import MainPage from "./pages/MainPage";
+import { HeaderMenu } from './components/HeaderMenu';
 function App() {
   return (
     <MantineProvider>
       <Router>
-        <Routes>
+        <HeaderMenu />
+        <Routes>  
           <Route path="/" element={<MainPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

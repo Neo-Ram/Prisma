@@ -1,5 +1,4 @@
 import Carousel from "../components/CarouselComponent";
-
 function MainPage() {
   return (
     <>

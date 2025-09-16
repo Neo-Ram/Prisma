@@ -1,10 +1,78 @@
-.cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 100px;
-    margin-right: 50px;
-    margin-left: 50px;
+.cardsdiv{
+   margin: 20px 150px;
+}
+@media (max-width: 1280px) {
+  .cardsdiv {
+    margin: 20px 100px;
+  }
+}
+@media (max-width: 1024px) {
+  .cardsdiv {
+    margin: 20px 50px;
+  }
+}
+@media (max-width: 768px) {
+  .cardsdiv {
+    margin: 20px 20px;
+  }
+}
+
+.examplediv{
+
+  width: 70%;
+  height: 100%;
+  margin: 100px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+  font-family: Outfit, var(--mantine-font-family);
+
+
+}
+.examplediv img{
+  width: 100%; 
+  height: auto; 
+  border-radius: 10px;
+}
+.texth1{
+  color: #228be6;
+}
+
+.codeblock {
+  background: #f6f8fa;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 16px;
+  color: #333;
+  margin-top: 16px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.howtousediv{
+  width: 70%;
+  height: 100%;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+}
+.howtousediv h1{
+  color: #e64980;
+}
+.howtousediv .codeblock{
+  margin-bottom: 40px;
+  padding: 30px;
+  font-size: 2em;
+}
+
+.gradientText {
+  background: linear-gradient(90deg, #e64980 0%, #228be6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+   font-family: 'Fira Mono', 'Consolas', monospace;
+  color: transparent;
+  font-weight: bold;
 }

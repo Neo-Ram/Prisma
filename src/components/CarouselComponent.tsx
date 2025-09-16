@@ -1,21 +1,51 @@
 import { Carousel } from '@mantine/carousel';
+import CardComponent from './CardComponent';
+import Eye from '../assets/Eye.png';
+import Aa from '../assets/Aa.png';
+import ReactLogo from '../assets/React.png';
+import WCAG from '../assets/WCAG.png';
 
 function CarouselComponent() {
   return (
     <Carousel
       withIndicators
-      height={350}
-      emblaOptions={{ dragFree: true, align: 'start' }}
-      slideGap="md"
+      height={320}
+      slideSize={{ base: '100%', sm: '50%', md: '33.333333%' }}
+      slideGap={{ base: 0, sm: 'xs', md: 'xs' }} 
+      emblaOptions={{ loop: true, align: 'center' }}
     >
       <Carousel.Slide>
-        <img
-          src="/src/assets/Prisma_logo_white.png"
-          alt="Prisma Logo"
-          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        <CardComponent
+          imagelink={Eye}
+          alt="Eye"
+          title="Color modes"
+          description="Support for different types of color blindness with predefined themes."
         />
       </Carousel.Slide>
-      {/* Puedes agregar más slides con otras imágenes si quieres */}
+      <Carousel.Slide>
+        <CardComponent
+          imagelink={Aa}
+          alt="A"
+          title="Scalable text"
+          description="Adjustable font sizes to improve readability for people with low vision."
+        />
+      </Carousel.Slide>
+      <Carousel.Slide>
+        <CardComponent
+          imagelink={ReactLogo}
+          alt="React"
+          title="Easy integration"
+          description="Lightweight components that work out of the box in any React project."
+        />
+      </Carousel.Slide>
+      <Carousel.Slide>
+        <CardComponent
+          imagelink={WCAG}
+          alt="WCAG"
+          title="WCAG compliance"
+          description="Built following basic accessibility guidelines to improve inclusiveness."
+        />
+      </Carousel.Slide>
     </Carousel>
   );
 }

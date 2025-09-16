@@ -1,43 +1,45 @@
 import { HeroTitle } from "../components/HeroTitle";
 import { HeroBullets } from "../components/HeroBullets";
-import CardComponent from "../components/CardComponent";
-import styles from "../pages/MainPage.module.css";
-import Eye from "../assets/Eye.png";
-import Aa from "../assets/Aa.png";
-import React from "../assets/React.png";
-import WCAG from "../assets/WCAG.png";
+import CarouselComponent from "../components/CarouselComponent";
+import styles from './MainPage.module.css';
+import example from '../assets/example.png';
 function MainPage() {
   return (
     <>
       <HeroTitle />
       <HeroBullets />
-      <div className={styles.cards}>
-        <CardComponent
-          imagelink={Eye}
-          alt="Eye"
-          title="Color modes"
-          description="Support for different types of color blindness with predefined themes."
-        />
-        <CardComponent
-          imagelink={Aa}
-          alt="A"
-          title="Scalable text"
-          description="Adjustable font sizes to improve readability for people with low vision."
-        />
-        <CardComponent
-          imagelink={React}
-          alt="React"
-          title="Easy integration"
-          description="Lightweight components that work out of the box in any React project."
-        />
-        <CardComponent
-          imagelink={WCAG}
-          alt="WCAG"
-          title="WCAG compliance"
-          description="Built following basic accessibility guidelines to improve inclusiveness."
-        />
+      <div className={styles.cardsdiv}>
+      <CarouselComponent />
       </div>
-      
+      <div className={styles.examplediv}>
+        <div>
+          <h1 className={styles.texth1}>Example</h1>
+          <pre className={styles.codeblock}>
+            <code>
+{`import { PrismaProvider } from '@prisma/client';
+
+function Demo() {
+  return (
+    <PrismaProvider defaultColorScheme="dark">
+      <App />
+    </PrismaProvider>
+  );
+}`}
+            </code>
+          </pre>
+        </div>
+        <img src={example} alt="" />
+      </div>
+      <div className={styles.howtousediv}>
+        <h1>How start to use</h1>
+        <pre className={styles.codeblock}>
+          <code>
+            npm install @
+            <span className={styles.gradientText}>prisma</span>
+            /client
+          </code>
+        </pre>
+      </div>
     </>
   );
 }

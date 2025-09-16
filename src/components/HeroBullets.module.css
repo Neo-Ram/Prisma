@@ -1,0 +1,68 @@
+.inner {
+  display: flex;
+  justify-content: space-between;
+  padding-top: calc(var(--mantine-spacing-xl) * 3);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 4);
+  font-family: Outfit, var(--mantine-font-family); /* Aplica la fuente a todo el contenido */
+}
+
+.content {
+  max-width: 480px;
+  margin-right: calc(var(--mantine-spacing-xl) * 3);
+}
+
+.title {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-family: Outfit, var(--mantine-font-family);
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.image {
+  width: 376px;
+  height: 356px;
+}
+
+.highlight {
+  position: relative;
+  background-color: var(--mantine-color-pink-light); 
+  border-radius: var(--mantine-radius-sm);
+  padding: 4px 12px;
+}
+    
+.mantine-List-itemLabel b{
+    font-family: Outfit, var(--mantine-font-family);
+}
+
+.content,
+.title,
+.image,
+.highlight,
+.mantine-List-itemLabel b,
+.mantine-List-itemLabel,
+.mantine-List-item,
+.mantine-Text-root,
+.mantine-Button-root {
+  font-family: Outfit, var(--mantine-font-family);
+}
+
+/* Media queries converted from SCSS variables to fixed pixel values */
+@media (max-width: 768px) {
+  .content {
+    max-width: 100%;
+    margin-right: 0;
+  }
+  .image {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 28px;
+  }
+  .control {
+    flex: 1;
+  }
+}

@@ -1,3 +1,11 @@
+/* Degradado para texto usando las variables globales mainpink y mainblue */
+.gradientText {
+  background: linear-gradient(90deg, var(--mainpink) 60%, var(--mainpurple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
 .inner {
   display: flex;
   justify-content: space-between;
@@ -26,7 +34,7 @@
 
 .highlight {
   position: relative;
-  background-color: var(--mantine-color-pink-light); 
+  background-color: var(--mantine-color-blue-light); 
   border-radius: var(--mantine-radius-sm);
   padding: 4px 12px;
 }

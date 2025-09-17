@@ -3,6 +3,8 @@ import { HeroBullets } from "../components/HeroBullets";
 import CarouselComponent from "../components/CarouselComponent";
 import styles from './MainPage.module.css';
 import example from '../assets/example.png';
+import AboutCard from "../components/AboutCard";
+import  FooterLinks  from "../components/FooterLinks";
 function MainPage() {
   return (
     <>
@@ -40,6 +42,8 @@ function Demo() {
           </code>
         </pre>
       </div>
+      <AboutCard />
+      <FooterLinks />
     </>
   );
 }

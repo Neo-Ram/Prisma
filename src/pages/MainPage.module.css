@@ -37,7 +37,7 @@
   border-radius: 10px;
 }
 .texth1{
-  color: #228be6;
+  color: var(--mainblue);
 }
 
 .codeblock {
@@ -60,7 +60,7 @@
   flex-direction: column;
 }
 .howtousediv h1{
-  color: #e64980;
+  color: var(--mainblue);
 }
 .howtousediv .codeblock{
   margin-bottom: 40px;

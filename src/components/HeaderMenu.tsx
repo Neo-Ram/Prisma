@@ -4,7 +4,6 @@ import { useDisclosure } from '@mantine/hooks';
 import classes from './HeaderMenu.module.css';
 
 const links = [
-    { link: '/about', label: 'Home' },
   { link: '/about', label: 'Components' },
   {
     link: '#1',
@@ -12,11 +11,10 @@ const links = [
     links: [
       { link: '/docs', label: 'Documentation' },
       { link: '/resources', label: 'Resources' },
-      { link: '/community', label: 'Community' },
-      { link: '/blog', label: 'Blog' },
+  
     ],
   },
-  { link: '/about', label: 'About' },
+  
  // { link: '/pricing', label: 'Pricing' },
   //{
    // link: '#2',

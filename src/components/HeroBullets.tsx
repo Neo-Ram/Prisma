@@ -9,7 +9,7 @@ export function HeroBullets() {
       <div className={classes.inner}>
         <div className={classes.content}>
           <Title className={classes.title}>
-            An <span className={classes.highlight} >accessible</span> React <br /> components library
+            An <span className={`${classes.highlight} `}>accessible</span> React <br /> components library
           </Title>
           <Text c="dimmed" mt="md">
            Build inclusive web applications with ease 
@@ -21,27 +21,31 @@ export function HeroBullets() {
             spacing="sm"
             size="sm"
             icon={
-              <ThemeIcon size={20} radius="xl" color='pink'>
-                <IconCheck size={12} stroke={1.5} />
+              <ThemeIcon size={5} radius="xl" color='black'>
+               
               </ThemeIcon>
             }
           >
             <List.Item>
-              <b>Accessibility focused</b> – components tested with color-blindness filters and scalable text for low vision.
+              <b className={classes.gradientText}>Accessibility focused</b>
+              &nbsp;– components tested with color-blindness filters and scalable text for low vision.
             </List.Item>
             <List.Item>
-              <b>Simple to use</b> – easy integration into any React project with minimal setup.
+              <b className={classes.gradientText}>Simple to use</b>
+              &nbsp;– easy integration into any React project with minimal setup.
             </List.Item>
             <List.Item>
-              <b>Customizable</b> – switch between themes for protanopia, deuteranopia, tritanopia, achromatopsia, or low vision.
+              <b className={classes.gradientText}>Customizable</b>
+              &nbsp;– switch between themes for protanopia, deuteranopia, tritanopia, achromatopsia, or low vision.
             </List.Item>
             <List.Item>
-              <b>Open source</b> – free to use and improve as part of my thesis project.
+              <b className={classes.gradientText}>Open source</b>
+              &nbsp;– free to use and improve as part of my thesis project.
             </List.Item>
           </List>
 
           <Group mt={30}>
-            <Button radius="l" size="md" className={classes.control} color='pink' variant="filled">
+            <Button radius="l" size="md" className={classes.control} color='blue' variant="filled">
               Get started
             </Button>
             

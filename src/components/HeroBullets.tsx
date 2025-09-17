@@ -1,4 +1,4 @@
-import { IconCheck } from '@tabler/icons-react';
+
 import { Button, Container, Group, Image, List, Text, ThemeIcon, Title } from '@mantine/core';
 import classes from './HeroBullets.module.css';
 import BoyWithLaptop from '../assets/BoyWithLaptop.png'

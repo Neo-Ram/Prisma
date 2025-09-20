@@ -1,19 +1,19 @@
-import { IconChevronDown } from '@tabler/icons-react';
-import { Burger, Center, Container, Group, Menu } from '@mantine/core';
+import { Burger, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './HeaderMenu.module.css';
 
+interface HeaderMenuProps {
+  onNavigate: (page: string) => void;
+}
+
 const links = [
-  { link: '/about', label: 'Components' },
-  {
-    link: '#1',
-    label: 'Learn',
-    links: [
-      { link: '/docs', label: 'Documentation' },
-      { link: '/resources', label: 'Resources' },
+  { page: 'components', label: 'Components' },
+  { page: 'color-blindness', label: 'Color blindness simulator' },
   
-    ],
-  },
+  
+  // 🔥 AQUÍ AGREGAS NUEVOS BOTONES DEL MENÚ:
+  // { page: 'nueva-pagina', label: 'Nueva Página' },
+  // { page: 'otra-pagina', label: 'Otra Página' },
   
  // { link: '/pricing', label: 'Pricing' },
   //{
@@ -27,43 +27,20 @@ const links = [
  // },
 ];
 
-export function HeaderMenu() {
+export function HeaderMenu({ onNavigate }: HeaderMenuProps) {
   const [opened, { toggle }] = useDisclosure(false);
 
   const items = links.map((link) => {
-    const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
-    ));
-
-    if (menuItems) {
-      return (
-        <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
-          <Menu.Target>
-            <a
-              href={link.link}
-              className={classes.link}
-              onClick={(event) => event.preventDefault()}
-            >
-              <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown size={14} stroke={1.5} />
-              </Center>
-            </a>
-          </Menu.Target>
-          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-        </Menu>
-      );
-    }
-
     return (
-      <a
+      <button
         key={link.label}
-        href={link.link}
         className={classes.link}
-        onClick={(event) => event.preventDefault()}
+        onClick={() => {
+          onNavigate(link.page);
+        }}
       >
         {link.label}
-      </a>
+      </button>
     );
   });
 
@@ -74,7 +51,8 @@ export function HeaderMenu() {
           <img
             src={('/src/assets/Prisma_logo_white_mini.png')}
             alt="Prisma Logo"
-            style={{ height: 35 }}
+            style={{ height: 35, cursor: 'pointer' }}
+            onClick={() => onNavigate('home')}
           />
           <Group gap={5} visibleFrom="sm">
             {items}

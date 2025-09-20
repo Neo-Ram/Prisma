@@ -4,3 +4,15 @@
   --mainpink: #e64980;
   --mainpurple: #ad5d9e;
 }
+
+/* Compensar el header fijo */
+body {
+  margin: 0;
+  padding-top: 56px; /* Altura del header */
+  overflow-y: scroll; /* Siempre mostrar scrollbar para evitar saltos */
+}
+
+/* Contenedor principal para evitar movimientos */
+html {
+  overflow-y: scroll; /* Asegurar scrollbar siempre visible */
+}

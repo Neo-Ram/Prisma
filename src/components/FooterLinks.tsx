@@ -7,7 +7,7 @@ const data = [
     
     title: 'Project',
     links: [
-      { label: 'Ramon Franco GitHub', link: '#' },
+      { label: 'Ramon Franco GitHub', link: '' },
       { label: 'Omar Beltran GitHub', link: '#' },
     ],
   },

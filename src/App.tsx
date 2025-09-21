@@ -1,7 +1,7 @@
 import { MantineProvider } from '@mantine/core';
 import { useState } from 'react';
 import { HeaderMenu } from './components/HeaderMenu';
-import MainPage from "./pages/MainPage";
+import PrincipalPage from "./pages/PrincipalPage";
 import ComponentsPage from './pages/ComponentsPage';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       // case 'otra-pagina':
       //   return <OtraPaginaComponent />;
       default:
-        return <MainPage />;
+        return <PrincipalPage />;
     }
   };
 

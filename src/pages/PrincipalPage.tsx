@@ -1,11 +1,11 @@
 import { HeroTitle } from "../components/HeroTitle";
 import { HeroBullets } from "../components/HeroBullets";
 import CarouselComponent from "../components/CarouselComponent";
-import styles from './MainPage.module.css';
+import styles from './PrincipalPage.module.css';
 import example from '../assets/example.png';
 import AboutCard from "../components/AboutCard";
 import  FooterLinks  from "../components/FooterLinks";
-function MainPage() {
+function PrincipalPage() {
   return (
     <>
       <HeroTitle />
@@ -48,4 +48,4 @@ function Demo() {
   );
 }
 
-export default MainPage;
+export default PrincipalPage;

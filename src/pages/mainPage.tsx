@@ -1,10 +1,10 @@
-import { HeroTitle } from "../components/HeroTitle";
-import { HeroBullets } from "../components/HeroBullets";
-import CarouselComponent from "../components/CarouselComponent";
+import { HeroTitle } from "../components/HeroTitle/HeroTitle";
+import { HeroBullets } from "../components/HeroBullets/HeroBullets";
+import CarouselComponent from "../components/CarouselComponent/CarouselComponent";
 import styles from './MainPage.module.css';
 import example from '../assets/example.png';
-import AboutCard from "../components/AboutCard";
-import  FooterLinks  from "../components/FooterLinks";
+import AboutCard from "../components/AboutCard/AboutCard";
+import  FooterLinks  from "../components/FooterLinks/FooterLinks";
 function MainPage() {
   return (
     <>

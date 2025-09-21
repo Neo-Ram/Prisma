@@ -1,6 +1,6 @@
 import { MantineProvider } from '@mantine/core';
 import { useState } from 'react';
-import { HeaderMenu } from './components/HeaderMenu';
+import { HeaderMenu } from './components/HeaderMenu/HeaderMenu';
 import MainPage from "./pages/MainPage";
 import ComponentsPage from './pages/ComponentsPage';
 

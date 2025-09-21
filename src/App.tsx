@@ -1,7 +1,7 @@
 import { MantineProvider } from '@mantine/core';
 import { useState } from 'react';
 import { HeaderMenu } from './components/HeaderMenu/HeaderMenu';
-import MainPage from "../src/pages/MainPage";
+import MainPage from "./pages/MainPage";
 import ComponentsPage from './pages/ComponentsPage';
 
 function App() {

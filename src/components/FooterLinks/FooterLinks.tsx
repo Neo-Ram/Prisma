@@ -1,6 +1,6 @@
-import {  Container, Text } from '@mantine/core';
-import classes from './FooterLinks.module.css';
-import Prisma_logo_white_mini from '../assets/Prisma_logo_white_mini.png'
+import { Container, Text } from "@mantine/core";
+import classes from "./FooterLinks.module.css";
+import Prisma_logo_white_mini from "../../assets/Prisma_logo_white_mini.png";
 
 const data = [
   {

@@ -1,9 +1,9 @@
 import { Carousel } from '@mantine/carousel';
-import CardComponent from './CardComponent';
-import Eye from '../assets/Eye.png';
-import Aa from '../assets/Aa.png';
-import ReactLogo from '../assets/React.png';
-import WCAG from '../assets/WCAG.png';
+import CardComponent from '../CardComponent/CardComponent';
+import Eye from '../../assets/Eye.png';
+import Aa from '../../assets/Aa.png';
+import ReactLogo from '../../assets/React.png';
+import WCAG from '../../assets/WCAG.png';
 
 function CarouselComponent() {
   return (

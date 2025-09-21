@@ -1,7 +1,7 @@
 import { Burger, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './HeaderMenu.module.css';
-import Prisma_logo_white_mini from '../assets/Prisma_logo_white_mini.png';
+import Prisma_logo_white_mini from '../../assets/Prisma_logo_white_mini.png';
 
 interface HeaderMenuProps {
   onNavigate: (page: string) => void;

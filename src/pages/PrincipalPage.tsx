@@ -48,5 +48,4 @@ function Demo() {
   );
 }
 
-
 export default PrincipalPage;

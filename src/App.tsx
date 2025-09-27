@@ -1,8 +1,8 @@
 import { MantineProvider } from '@mantine/core';
 import { useState } from 'react';
 import { HeaderMenu } from './components/HeaderMenu/HeaderMenu';
-import MainPage from "./pages/PrincipalPage";
-import ComponentsPage from './pages/ComponentsPage';
+import PrincipalPage from "./pages/PrincipalPage";
+import ComponentsPage from './pages/All_components/ComponentsPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -19,7 +19,7 @@ function App() {
       // case 'otra-pagina':
       //   return <OtraPaginaComponent />;
       default:
-        return <MainPage />;
+        return <PrincipalPage />;
     }
   };
 

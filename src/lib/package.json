@@ -1,0 +1,40 @@
+{
+    "name": "@prisma/components",
+    "version": "0.1.0",
+    "description": "Prisma React Components Library - Accessible components for color blindness, low vision and high contrast",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "keywords": [
+        "react",
+        "components",
+        "prisma",
+        "accessibility",
+        "color-blindness",
+        "high-contrast",
+        "low-vision",
+        "a11y",
+        "ui-library"
+    ],
+    "author": "Tu nombre",
+    "license": "MIT",
+    "peerDependencies": {
+        "react": ">=18.0.0",
+        "react-dom": ">=18.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.3",
+        "@types/react-dom": "^18.3.0",
+        "@vitejs/plugin-react": "^4.3.1",
+        "typescript": "^5.5.3",
+        "vite": "^5.4.1"
+    }
+}

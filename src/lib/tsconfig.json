@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    // Configuración básica de TypeScript
+    "target": "ES2020", // Versión de JavaScript que se generará
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // Librerías que estarán disponibles
+    "allowJs": false, // Solo permitir archivos TypeScript
+    "skipLibCheck": true, // Acelerar la compilación saltando verificación de librerías
+    "esModuleInterop": true, // Compatibilidad con módulos CommonJS
+    "allowSyntheticDefaultImports": true, // Permitir imports más flexibles
+    "strict": true, // Modo estricto de TypeScript (más seguro)
+    "forceConsistentCasingInFileNames": true, // Consistencia en nombres de archivos
+    
+    // Configuración para módulos
+    "module": "ESNext", // Sistema de módulos moderno
+    "moduleResolution": "bundler", // Resolución de módulos moderna para bundlers
+    "resolveJsonModule": true, // Permitir importar archivos JSON
+    "isolatedModules": true, // Cada archivo es un módulo independiente
+    "noEmit": false, // SÍ generar archivos de salida
+    
+    // Configuración para JSX (React)
+    "jsx": "react-jsx", // Soporte para React 17+
+    
+    // Configuración específica para la librería Prisma
+    "declaration": true, // Generar archivos .d.ts para TypeScript
+    "declarationMap": true, // Mapas de declaraciones para debugging
+    "outDir": "dist", // Carpeta donde se guardarán los archivos compilados
+    
+    // Configuración de carpetas
+    "baseUrl": ".", // Carpeta base del proyecto
+    "paths": {
+      "@/*": ["src/*"] // Alias para hacer imports más fáciles
+    }
+  },
+  "include": [
+    "src/**/*" // Incluir todos los archivos dentro de src
+  ],
+  "exclude": [
+    "node_modules", // Excluir las dependencias
+    "dist" // Excluir archivos generados
+  ]
+}

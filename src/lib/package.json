@@ -1,5 +1,5 @@
 {
-    "name": "@prisma/components",
+    "name": "@neo-ram/prisma",
     "version": "0.1.0",
     "description": "Prisma React Components Library - Accessible components for color blindness, low vision and high contrast",
     "main": "dist/index.js",
@@ -24,7 +24,7 @@
         "a11y",
         "ui-library"
     ],
-    "author": "Tu nombre",
+    "author": "Neo-Ram & OmarMur",
     "license": "MIT",
     "peerDependencies": {
         "react": ">=18.0.0",

@@ -151,15 +151,11 @@ npm run dev
 
 ## 📚 Examples
 
-Check out more examples in our [documentation](https://prisma-components.dev) (coming soon).
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+Check out more examples coming soon.
 
 ## 📄 License
 
-MIT © [Your Name]
+MIT © [Neo-Ram & OmarMur]
 
 ---
 

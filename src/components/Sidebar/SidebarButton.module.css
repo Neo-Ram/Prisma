@@ -1,0 +1,23 @@
+.btn{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    color: #495057;
+    text-align: left;
+    width: 90%;
+}
+.btn:hover{
+    background-color: #f8f9fa;
+    color: black;
+}
+
+
+/* Estado activo manual */
+.active {
+    background-color: #e7f5ff;
+    color: #1971c2;
+}

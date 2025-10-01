@@ -1,8 +1,8 @@
 import { MantineProvider } from '@mantine/core';
 import { useState } from 'react';
-import { HeaderMenu } from './components/HeaderMenu';
+import { HeaderMenu } from './components/HeaderMenu/HeaderMenu';
 import PrincipalPage from "./pages/PrincipalPage";
-import ComponentsPage from './pages/ComponentsPage';
+import ComponentsPage from './pages/All_components/ComponentsPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');

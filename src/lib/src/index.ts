@@ -1,6 +1,9 @@
 // Prisma Components Library - Punto de entrada principal
 // Librería de componentes React accesibles para daltonismo, baja visión y alto contraste
 
+// Importar estilos globales automáticamente
+import './styles/globals.css';
+
 // Exportamos todos los componentes disponibles en nuestra librería
 
 // ====== COMPONENTES ======

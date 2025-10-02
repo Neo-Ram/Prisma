@@ -8,8 +8,12 @@ export default defineConfig({
       // Punto de entrada de la librería
       entry: './src/index.ts',
       name: 'PrismaUI',
-      // Nombres de archivos de salida
-      fileName: (format) => `index.${format}.js`
+      // Nombres de archivos de salida que coincidan con package.json
+      fileName: (format) => {
+        if (format === 'es') return 'index.es.js'
+        if (format === 'umd') return 'index.umd.js'
+        return `index.${format}.js`
+      }
     },
     rollupOptions: {
       // Asegurar que React no se incluya en el bundle
@@ -20,6 +24,8 @@ export default defineConfig({
           'react-dom': 'ReactDOM'
         }
       }
-    }
+    },
+    // Generar archivos .d.ts
+    emptyOutDir: true
   }
 })

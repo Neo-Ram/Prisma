@@ -1,0 +1,26 @@
+/* Prisma Components Global Styles */
+/* Este archivo contiene estilos globales que se aplican automáticamente */
+
+/* Variables CSS globales para colores seguros para daltonismo */
+:root {
+  /* Colores base seguros para todos los tipos de daltonismo */
+  --prisma-color-safe-blue: #0066cc;      /* Azul seguro para la mayoría de daltonismos */
+  --prisma-color-safe-orange: #ff6600;    /* Naranja seguro - contrasta bien con azul */
+  --prisma-color-safe-green: #00aa44;     /* Verde seguro */
+  --prisma-color-safe-red: #cc0000;       /* Rojo seguro */
+  --prisma-color-safe-gray: #666666;      /* Gris neutro seguro */
+  --prisma-color-white: #ffffff;
+  --prisma-color-black: #000000;
+  
+  /* Variables para espaciado - siguiendo convenciones de diseño */
+  --prisma-spacing-xs: 4px;   /* Extra pequeño */
+  --prisma-spacing-sm: 8px;   /* Pequeño */
+  --prisma-spacing-md: 12px;  /* Mediano */
+  --prisma-spacing-lg: 16px;  /* Grande */
+  --prisma-spacing-xl: 24px;  /* Extra grande */
+  
+  /* Variables para bordes y sombras */
+  --prisma-border-radius: 6px;
+  --prisma-border-width: 2px;
+  --prisma-focus-outline-width: 3px;
+}

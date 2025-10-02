@@ -1,10 +1,23 @@
 {
     "name": "@neo-ram/prisma",
-    "version": "0.1.0",
-    "description": "Prisma React Components Library - Accessible components for color blindness, low vision and high contrast",
-    "main": "dist/index.js",
-    "module": "dist/index.esm.js",
+    "version": "0.1.4",
+    "description": "Prisma React + TypeScript Components Library - Accessible components for color blindness, low vision and high contrast",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./style.css": {
+            "default": "./dist/style.css"
+        },
+        "./dist/style.css": {
+            "default": "./dist/style.css"
+        }
+    },
     "files": [
         "dist"
     ],
@@ -15,6 +28,7 @@
     },
     "keywords": [
         "react",
+        "typescript",
         "components",
         "prisma",
         "accessibility",

@@ -13,9 +13,9 @@ A React component library focused on accessibility for color blindness, low visi
 ## 📦 Installation
 
 ```bash
-npm install @prisma/components
+npm install @neo-ram/prisma
 # or
-yarn add @prisma/components
+yarn add @neo-ram/prisma
 ```
 
 ## 🚀 Quick Start
@@ -23,7 +23,9 @@ yarn add @prisma/components
 ### Basic Usage
 
 ```jsx
-import { PButton } from '@prisma/components';
+import { PButton } from '@neo-ram/prisma';
+// Import the CSS styles
+import '@neo-ram/prisma/style.css';
 
 function App() {
   return (
@@ -37,10 +39,25 @@ function App() {
 }
 ```
 
+### Alternative: Import CSS in your main file
+
+```jsx
+// In your main.tsx or index.tsx
+import '@neo-ram/prisma/style.css';
+
+// Then in any component
+import { PButton } from '@neo-ram/prisma';
+
+function MyComponent() {
+  return <PButton>Button with styles</PButton>;
+}
+```
+
 ### With Color Blindness Support
 
 ```jsx
-import { PButton } from '@prisma/components';
+import { PButton } from '@neo-ram/prisma';
+import '@neo-ram/prisma/style.css';
 
 function App() {
   return (

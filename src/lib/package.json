@@ -1,0 +1,54 @@
+{
+    "name": "@neo-ram/prisma",
+    "version": "0.1.4",
+    "description": "Prisma React + TypeScript Components Library - Accessible components for color blindness, low vision and high contrast",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./style.css": {
+            "default": "./dist/style.css"
+        },
+        "./dist/style.css": {
+            "default": "./dist/style.css"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "keywords": [
+        "react",
+        "typescript",
+        "components",
+        "prisma",
+        "accessibility",
+        "color-blindness",
+        "high-contrast",
+        "low-vision",
+        "a11y",
+        "ui-library"
+    ],
+    "author": "Neo-Ram & OmarMur",
+    "license": "MIT",
+    "peerDependencies": {
+        "react": ">=18.0.0",
+        "react-dom": ">=18.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.3",
+        "@types/react-dom": "^18.3.0",
+        "@vitejs/plugin-react": "^4.3.1",
+        "typescript": "^5.5.3",
+        "vite": "^5.4.1"
+    }
+}

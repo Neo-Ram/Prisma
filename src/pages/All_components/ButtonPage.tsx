@@ -1,11 +1,11 @@
 
-import { PButton } from "../../lib/src/components/Button/PButton";
 const ButtonPage = () => {
   return (
-    <PButton variant="primary" size="small" disabled={true}>
+    <Button>
       Probando mi botón
-    </PButton>
+    <Button>
   );
+  return <div>Esta es la página de Button.</div>;
 };
 
 export default ButtonPage;

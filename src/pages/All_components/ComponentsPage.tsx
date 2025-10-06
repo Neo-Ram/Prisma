@@ -4,15 +4,12 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Styles from "./ComponentsPage.module.css";
 import ButtonPage from "./ButtonPage";
 import InputPage from "./InputPage";
-import SidebarPage from "./SidebarPage";
-import HeaderPage from "./HeaderPage";
+
 
 // Relaciono los nombres de los botones con los componentes de página
 const pageMap: Record<string, React.ReactElement> = {
   Button: <ButtonPage />,
   Input: <InputPage />,
-  Sidebar: <SidebarPage />,
-  Header: <HeaderPage />,
 };
 
 const ComponentsPage = () => {

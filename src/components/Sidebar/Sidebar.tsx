@@ -6,11 +6,15 @@ import SidebarButton from './SidebarButton';
 const sections = [
   {
     title: "Form controls",
-    buttons: ["Input", "Button"]
+    buttons: ["Input", "Button", "Textarea", "Checkbox", "Radiogroup", "Select", "Toggle", "Slider"] 
   },
   {
     title: "Navigation",
-    buttons: ["Sidebar", "Header"]
+    buttons: ["Breadcrumb", "Pagination"]
+  },
+  {
+    title: "Feedback",
+    buttons: ["Alert", "Spinner", "Tooltip"]
   }
 ];
 
@@ -21,7 +25,7 @@ const Sidebar = ({ onSelect, activePage }: { onSelect: (label: string) => void; 
       {sections.map((section) => (
         <div key={section.title}>
           <div className={Styles.sectionTitle}>{section.title}</div>
-          {section.buttons.map((label) => (
+          {[...section.buttons].sort((a, b) => a.localeCompare(b)).map((label) => (
             <SidebarButton
               key={label}
               active={activePage === label}

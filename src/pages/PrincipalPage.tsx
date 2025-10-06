@@ -18,15 +18,17 @@ function PrincipalPage() {
           <h1 className={styles.texth1}>Example</h1>
           <pre className={styles.codeblock}>
             <code>
-{`import { PrismaProvider } from '@prisma/client';
+{`import { Button } from 'neo-ram-prisma';
 
-function Demo() {
-  return (
-    <PrismaProvider defaultColorScheme="dark">
-      <App />
-    </PrismaProvider>
-  );
-}`}
+// Accessible for colorblind users
+<Button 
+  variant="danger" 
+  colorVision="protanopia"
+  accessibility="high-contrast"
+>
+  Delete Item
+</Button>
+`}
             </code>
           </pre>
         </div>
@@ -37,8 +39,8 @@ function Demo() {
         <pre className={styles.codeblock}>
           <code>
             npm install @
-            <span className={styles.gradientText}>prisma</span>
-            /client
+            <span className={styles.gradientText}>neo-ram-prisma</span>
+            
           </code>
         </pre>
       </div>

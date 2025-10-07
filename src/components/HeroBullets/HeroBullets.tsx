@@ -3,7 +3,11 @@ import { Button, Container, Group, Image, List, Text, ThemeIcon, Title } from '@
 import classes from './HeroBullets.module.css';
 import BoyWithLaptop from '../../assets/BoyWithLaptop.png'
 
-export function HeroBullets() {
+interface HeroBulletsProps {
+  onNavigate: (page: string) => void;
+}
+
+export function HeroBullets({ onNavigate }: HeroBulletsProps) {
   return (
     <Container size="md">
       <div className={classes.inner}>
@@ -45,7 +49,14 @@ export function HeroBullets() {
           </List>
 
           <Group mt={30}>
-            <Button radius="l" size="md" className={classes.control} color='blue' variant="filled">
+            <Button 
+              radius="l" 
+              size="md" 
+              className={classes.control} 
+              color='blue' 
+              variant="filled"
+              onClick={() => onNavigate('components')}
+            >
               Get started
             </Button>
             

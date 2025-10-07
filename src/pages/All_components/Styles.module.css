@@ -2,6 +2,15 @@
   font-family: Arial, sans-serif;
   padding: 10px;
   padding-top: 0;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Safari y Chrome */
 }
 .container h1 {
   font-size: 40px;
@@ -11,6 +20,24 @@
   color: #666;
 }
 .container p {
+  font-size: 16px;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+.containerv {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  padding-top: 0;
+  flex-direction: column;
+}
+.containerv h1 {
+  font-size: 40px;
+}
+.containerv h3 {
+  font-size: 18px;
+  color: #666;
+}
+.containerv p {
   font-size: 16px;
   color: #2c2c2c;
   margin-bottom: 20px;

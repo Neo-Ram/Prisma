@@ -2,14 +2,20 @@ import { HeroTitle } from "../components/HeroTitle/HeroTitle";
 import { HeroBullets } from "../components/HeroBullets/HeroBullets";
 import CarouselComponent from "../components/CarouselComponent/CarouselComponent";
 import styles from './PrincipalPage.module.css';
-import example from '../assets/example.png';
+
 import AboutCard from "../components/AboutCard/AboutCard";
 import  FooterLinks  from "../components/FooterLinks/FooterLinks";
-function PrincipalPage() {
+import { Button } from "neo-ram-prisma";
+
+interface PrincipalPageProps {
+  onNavigate: (page: string) => void;
+}
+
+function PrincipalPage({ onNavigate }: PrincipalPageProps) {
   return (
     <>
-      <HeroTitle />
-      <HeroBullets />
+      <HeroTitle onNavigate={onNavigate} />
+      <HeroBullets onNavigate={onNavigate} />
       <div className={styles.cardsdiv}>
       <CarouselComponent />
       </div>
@@ -24,15 +30,16 @@ function PrincipalPage() {
 <Button 
   variant="danger" 
   colorVision="protanopia"
-  accessibility="high-contrast"
+  accessibility="low-vision"
 >
-  Delete Item
+  Hello World!
 </Button>
 `}
             </code>
           </pre>
         </div>
-        <img src={example} alt="" />
+        <Button variant="danger" colorVision="protanopia" accessibility="low-vision">Hello World!</Button>
+        
       </div>
       <div className={styles.howtousediv}>
         <h1>How start to use</h1>

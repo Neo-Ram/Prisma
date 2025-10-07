@@ -2,7 +2,11 @@ import { Button, Container, Group, Text } from '@mantine/core';
 import { GithubIcon } from '@mantinex/dev-icons';
 import classes from './HeroTitle.module.css';
 
-export function HeroTitle() {
+interface HeroTitleProps {
+  onNavigate: (page: string) => void;
+}
+
+export function HeroTitle({ onNavigate }: HeroTitleProps) {
   return (
     <div className={classes.wrapper}>
       <Container size={700} className={classes.inner}>
@@ -23,13 +27,16 @@ export function HeroTitle() {
             className={classes.control}
             variant="gradient"
             gradient={{ from: 'pink', to: 'blue' }}
+            onClick={() => onNavigate('components')}
           >
             Get started
           </Button>
 
           <Button
             component="a"
-            href="#"
+            href="https://github.com/Neo-Ram/prisma-ui-library"
+            target="_blank"
+            rel="noopener noreferrer"
             size="xl"
             variant="default"
             className={classes.control}

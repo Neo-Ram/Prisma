@@ -10,4 +10,11 @@
 	padding: 32px;
 	background: #fff;
 	overflow-y: auto;
+	/* Ocultar scrollbar pero mantener funcionalidad */
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.mainContent::-webkit-scrollbar {
+	display: none; /* Safari y Chrome */
 }

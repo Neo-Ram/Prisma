@@ -9,10 +9,24 @@
 body {
   margin: 0;
   padding-top: 56px; /* Altura del header */
-  overflow-y: scroll; /* Siempre mostrar scrollbar para evitar saltos */
+  overflow-y: auto; /* Permitir scroll pero ocultar scrollbar */
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Safari y Chrome */
 }
 
 /* Contenedor principal para evitar movimientos */
 html {
-  overflow-y: scroll; /* Asegurar scrollbar siempre visible */
+  overflow-y: auto; /* Permitir scroll pero ocultar scrollbar */
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Safari y Chrome */
 }

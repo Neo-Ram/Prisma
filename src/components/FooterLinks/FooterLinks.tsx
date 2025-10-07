@@ -7,7 +7,7 @@ const data = [
     
     title: 'Project',
     links: [
-      { label: 'Ramon Franco GitHub', link: '' },
+      { label: 'Ramon Franco GitHub', link: 'https://github.com/Neo-Ram' },
       { label: 'Omar Beltran GitHub', link: '#' },
     ],
   },
@@ -21,7 +21,8 @@ export function FooterLinks() {
         className={classes.link}
         component="a"
         href={link.link}
-        onClick={(event) => event.preventDefault()}
+        target={link.link.startsWith('http') ? '_blank' : undefined}
+        rel={link.link.startsWith('http') ? 'noopener noreferrer' : undefined}
       >
         {link.label}
       </Text>

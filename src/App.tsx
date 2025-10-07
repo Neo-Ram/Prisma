@@ -19,7 +19,7 @@ function App() {
       // case 'otra-pagina':
       //   return <OtraPaginaComponent />;
       default:
-        return <PrincipalPage />;
+        return <PrincipalPage onNavigate={setCurrentPage} />;
     }
   };
 

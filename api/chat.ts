@@ -82,7 +82,7 @@ export default async function handler(
 
     // Inicializar Gemini con la API key
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     // Generar respuesta con el contexto de Spectrum
     const result = await model.generateContent([

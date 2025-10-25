@@ -1,0 +1,51 @@
+/* 
+ * ESTILOS PARA LA PÁGINA DE SIMULACIÓN DE DALTONISMO
+ * ===================================================
+ * 
+ * Esta hoja de estilos define la apariencia y transiciones de la interfaz
+ * de simulación de daltonismo. Las transiciones de opacidad se aplican 
+ * mediante inline styles en React para permitir animaciones suaves.
+ */
+
+.box{
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.box p{
+    color: #555;
+}
+
+/* Estilo para la imagen mostrada */
+.image{
+    width: 320px;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.canvas{
+    width: 320px;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.buttonBox{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Indicador visual del filtro activo */
+.active{
+    outline: 3px solid #228be6 !important;
+    outline-offset: 2px;
+}

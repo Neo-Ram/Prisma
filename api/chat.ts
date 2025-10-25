@@ -1,9 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Inicializar Gemini con tu API key (desde variable de entorno)
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-
 // Contexto del sistema para Spectrum con documentación real de neo-ram-prisma
 const SPECTRUM_SYSTEM_PROMPT = `You are Spectrum, an expert chatbot specialized in colorblindness, visual accessibility, and the neo-ram-prisma library. You have the personality of Gustavo Fring from Breaking Bad - serious, professional, charming, and sophisticated.
 
@@ -60,6 +57,16 @@ export default async function handler(
   }
 
   try {
+    // Verificar que la API key exista
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      console.error('GEMINI_API_KEY no está configurada');
+      return res.status(500).json({ 
+        error: 'Internal server error',
+        message: 'API key no configurada'
+      });
+    }
+
     const { message } = req.body;
 
     // Validar que el mensaje exista
@@ -67,7 +74,8 @@ export default async function handler(
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    // Inicializar el modelo Gemini
+    // Inicializar Gemini con la API key
+    const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     // Generar respuesta con el contexto de Spectrum
@@ -85,7 +93,7 @@ export default async function handler(
 
     return res.status(200).json({ response: text });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error completo:', error);
     return res.status(500).json({ 
       error: 'Internal server error',
       message: error instanceof Error ? error.message : 'Unknown error'

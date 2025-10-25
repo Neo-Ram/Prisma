@@ -192,6 +192,31 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Tooltip, Button } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  return (
+    <Tooltip 
+      content="Custom styled tooltip"
+      position="top"
+      colorVision="protanopia"
+      variant="custom"
+      arrow
+      customColors={{
+        defaultBg: '#ffffff',
+        defaultColor: '#000000',
+        defaultBorder: '#cbd2dd',
+        protanopiaBg: '#ffffff',
+        protanopiaColor: '#000000',
+        protanopiaBorder: '#FFA500'
+      }}
+    >
+      <Button>Custom tooltip</Button>
+    </Tooltip>
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -789,6 +814,99 @@ function Demo() {
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className={styles.component}>Tooltip</span>&gt;<br/>
               &nbsp;&nbsp;);<br/>
               {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomTooltipColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomTooltipColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Background color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Border color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <div className={styles.centered}>
+          <Tooltip content="Blue custom tooltip" position="top" variant='custom' arrow customColors={{ defaultBg: '#FFFFFF', defaultColor: '#000000', defaultBorder: '#007BFF', protanopiaBg: '#FFFFFF', protanopiaColor: '#000000', protanopiaBorder: '#FFA500', deuteranopiaBg: '#FFFFFF', deuteranopiaColor: '#000000', deuteranopiaBorder: '#9C27B0', tritanopiaBg: '#FFFFFF', tritanopiaColor: '#000000', tritanopiaBorder: '#00BCD4' }}>
+            <Button variant="primary">Hover me</Button>
+          </Tooltip>
+          <Tooltip content="Orange custom tooltip" position="top" colorVision='protanopia' variant='custom' arrow customColors={{ defaultBg: '#FFFFFF', defaultColor: '#000000', defaultBorder: '#FF8C00', protanopiaBg: '#FFFFFF', protanopiaColor: '#000000', protanopiaBorder: '#FFA500', deuteranopiaBg: '#FFFFFF', deuteranopiaColor: '#000000', deuteranopiaBorder: '#FFA500', tritanopiaBg: '#FFFFFF', tritanopiaColor: '#000000', tritanopiaBorder: '#FFA500' }}>
+            <Button variant="secondary">Hover me</Button>
+          </Tooltip>
+          <Tooltip content="Green custom tooltip" position="top" colorVision='deuteranopia' variant='custom' arrow customColors={{ defaultBg: '#FFFFFF', defaultColor: '#000000', defaultBorder: '#28A745', protanopiaBg: '#FFFFFF', protanopiaColor: '#000000', protanopiaBorder: '#28A745', deuteranopiaBg: '#FFFFFF', deuteranopiaColor: '#000000', deuteranopiaBorder: '#4CAF50', tritanopiaBg: '#FFFFFF', tritanopiaColor: '#000000', tritanopiaBorder: '#4CAF50' }}>
+            <Button variant="success">Hover me</Button>
+          </Tooltip>
+          <Tooltip content="Purple custom tooltip" position="top" colorVision='tritanopia' variant='custom' arrow customColors={{ defaultBg: '#FFFFFF', defaultColor: '#000000', defaultBorder: '#A855F7', protanopiaBg: '#FFFFFF', protanopiaColor: '#000000', protanopiaBorder: '#A855F7', deuteranopiaBg: '#FFFFFF', deuteranopiaColor: '#000000', deuteranopiaBorder: '#A855F7', tritanopiaBg: '#FFFFFF', tritanopiaColor: '#000000', tritanopiaBorder: '#D946EF' }}>
+            <Button variant="warning">Hover me</Button>
+          </Tooltip>
+          <Tooltip content="Pink custom tooltip" position="top" variant='custom' arrow customColors={{ defaultBg: '#FFFFFF', defaultColor: '#000000', defaultBorder: '#EC4899', protanopiaBg: '#FFFFFF', protanopiaColor: '#000000', protanopiaBorder: '#F472B6', deuteranopiaBg: '#FFFFFF', deuteranopiaColor: '#000000', deuteranopiaBorder: '#F472B6', tritanopiaBg: '#FFFFFF', tritanopiaColor: '#000000', tritanopiaBorder: '#F472B6' }}>
+            <Button variant="danger">Hover me</Button>
+          </Tooltip>
+        </div>
+
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'custom')}>
+              {copiedButton === 'custom' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>Tooltip</span>, <span className={styles.component}>Button</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Tooltip</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>content</span><span className={styles.operator}>=</span><span className={styles.string}>"Custom styled tooltip"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>position</span><span className={styles.operator}>=</span><span className={styles.string}>"top"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>"protanopia"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>arrow</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>={'{'}</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.string}>'#ffffff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.string}>'#000000'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.string}>'#cbd2dd'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.string}>'#ffffff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.string}>'#000000'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBorder</span>: <span className={styles.string}>'#FFA500'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'}'}&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Button</span>&gt;Custom tooltip&lt;/<span className={styles.component}>Button</span>&gt;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className={styles.component}>Tooltip</span>&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              &#125;
             </code>
           </div>
         </div>

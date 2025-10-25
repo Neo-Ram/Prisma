@@ -5,6 +5,10 @@ import SidebarButton from './SidebarButton';
 // Defino las secciones con títulos y botones
 const sections = [
   {
+    title: "IA Assistant",
+    buttons: ["Custom-colors"]
+  },
+  {
     title: "Form controls",
     buttons: ["Input", "Button", "Textarea", "Checkbox", "Radiogroup", "Select", "Toggle", "Slider"] 
   },

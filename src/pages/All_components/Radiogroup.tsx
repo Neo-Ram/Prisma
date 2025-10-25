@@ -183,6 +183,61 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Radiogroup } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+import { useState } from 'react';
+
+function Demo() {
+  const [plan, setPlan] = useState('basic');
+  const options = [
+    { value: 'basic', label: 'Basic', description: 'Perfect for individuals' },
+    { value: 'pro', label: 'Pro', description: 'Best for teams' },
+    { value: 'enterprise', label: 'Enterprise', description: 'For large organizations' }
+  ];
+
+  return (
+    <Radiogroup
+      name='plan'
+      label='Choose your plan'
+      variant='custom'
+      colorVision='protanopia'
+      options={options}
+      value={plan}
+      onChange={setPlan}
+      customColors={{
+        // Normal vision colors
+        defaultColor: '#1976D2',
+        defaultBorderColor: '#CCCCCC',
+        defaultBorderColorHover: '#1976D2',
+        defaultBorderColorFocus: '#1976D2',
+        defaultLabelColor: '#000000',
+        defaultDescriptionColor: '#666666',
+        // Protanopia
+        protanopiaColor: '#FFA500',
+        protanopiaBorderColor: '#E6B800',
+        protanopiaBorderColorHover: '#FFA500',
+        protanopiaBorderColorFocus: '#FFA500',
+        protanopiaLabelColor: '#000000',
+        protanopiaDescriptionColor: '#666666',
+        // Deuteranopia
+        deuteranopiaColor: '#9C27B0',
+        deuteranopiaBorderColor: '#E6B8D7',
+        deuteranopiaBorderColorHover: '#9C27B0',
+        deuteranopiaBorderColorFocus: '#9C27B0',
+        deuteranopiaLabelColor: '#000000',
+        deuteranopiaDescriptionColor: '#666666',
+        // Tritanopia
+        tritanopiaColor: '#00BCD4',
+        tritanopiaBorderColor: '#B3E5FC',
+        tritanopiaBorderColorHover: '#00BCD4',
+        tritanopiaBorderColorFocus: '#00BCD4',
+        tritanopiaLabelColor: '#000000',
+        tritanopiaDescriptionColor: '#666666'
+      }}
+    />
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -211,7 +266,7 @@ function Demo() {
           </div>
           <div className={styles.code}>
             <code>
-              <span className={styles.keyword}>export type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span>;<br/>
+              <span className={styles.keyword}>export type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span>;<br/>
               <span className={styles.keyword}>export type</span> <span className={styles.component}>ColorVision</span> <span className={styles.operator}>=</span> <span className={styles.string}>'normal'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'protanopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'deuteranopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'tritanopia'</span>;<br/>
               <span className={styles.keyword}>export type</span> <span className={styles.component}>AccessibilityMode</span> <span className={styles.operator}>=</span> <span className={styles.string}>'default'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'low-vision'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'high-contrast'</span>;<br/>
               <span className={styles.keyword}>export type</span> <span className={styles.component}>Size</span> <span className={styles.operator}>=</span> <span className={styles.string}>'xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'xl'</span>;<br/>
@@ -573,6 +628,297 @@ function Demo() {
               <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() &#123;<br/>
               &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Radiogroup</span> <span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'secondary'</span> <span className={styles.property}>accessibility</span><span className={styles.operator}>=</span><span className={styles.string}>'high-contrast'</span>&gt;&lt;/<span className={styles.component}>Radiogroup</span>&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              &#125;
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomRadiogroupColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomRadiogroupColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Radio button color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorderColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Border color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorderColorHover</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Hover border</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorderColorFocus</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Focus border</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultLabelColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Label text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultDescriptionColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Description text color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorderColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorderColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorderColorFocus</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaLabelColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaDescriptionColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderColorFocus</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaLabelColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaDescriptionColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorderColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorderColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorderColorFocus</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaLabelColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaDescriptionColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <div className={styles.centered}>
+          <Radiogroup 
+            name="custom-1" 
+            label="Blue Plan" 
+            variant='custom'
+            options={options.slice(0, 3)} 
+            value={selectedValue} 
+            onChange={setSelectedValue}
+            customColors={{
+              defaultColor: '#007BFF',
+              defaultBorderColor: '#CCCCCC',
+              defaultBorderColorHover: '#007BFF',
+              defaultBorderColorFocus: '#007BFF',
+              defaultLabelColor: '#000000',
+              defaultDescriptionColor: '#666666',
+              protanopiaColor: '#007BFF',
+              protanopiaBorderColor: '#CCCCCC',
+              protanopiaBorderColorHover: '#007BFF',
+              protanopiaBorderColorFocus: '#007BFF',
+              protanopiaLabelColor: '#000000',
+              protanopiaDescriptionColor: '#666666',
+              deuteranopiaColor: '#007BFF',
+              deuteranopiaBorderColor: '#CCCCCC',
+              deuteranopiaBorderColorHover: '#007BFF',
+              deuteranopiaBorderColorFocus: '#007BFF',
+              deuteranopiaLabelColor: '#000000',
+              deuteranopiaDescriptionColor: '#666666',
+              tritanopiaColor: '#007BFF',
+              tritanopiaBorderColor: '#CCCCCC',
+              tritanopiaBorderColorHover: '#007BFF',
+              tritanopiaBorderColorFocus: '#007BFF',
+              tritanopiaLabelColor: '#000000',
+              tritanopiaDescriptionColor: '#666666'
+            }}
+          />
+          <Radiogroup 
+            name="custom-2" 
+            label="Orange Plan" 
+            variant='custom'
+            colorVision='protanopia'
+            options={options.slice(0, 3)} 
+            value={selectedValue} 
+            onChange={setSelectedValue}
+            customColors={{
+              defaultColor: '#FF8C00',
+              defaultBorderColor: '#E6B800',
+              defaultBorderColorHover: '#FF8C00',
+              defaultBorderColorFocus: '#FF8C00',
+              defaultLabelColor: '#000000',
+              defaultDescriptionColor: '#666666',
+              protanopiaColor: '#FFB84D',
+              protanopiaBorderColor: '#FFA500',
+              protanopiaBorderColorHover: '#FFB84D',
+              protanopiaBorderColorFocus: '#FFB84D',
+              protanopiaLabelColor: '#000000',
+              protanopiaDescriptionColor: '#666666',
+              deuteranopiaColor: '#FFB84D',
+              deuteranopiaBorderColor: '#FFA500',
+              deuteranopiaBorderColorHover: '#FFB84D',
+              deuteranopiaBorderColorFocus: '#FFB84D',
+              deuteranopiaLabelColor: '#000000',
+              deuteranopiaDescriptionColor: '#666666',
+              tritanopiaColor: '#FFB84D',
+              tritanopiaBorderColor: '#FFA500',
+              tritanopiaBorderColorHover: '#FFB84D',
+              tritanopiaBorderColorFocus: '#FFB84D',
+              tritanopiaLabelColor: '#000000',
+              tritanopiaDescriptionColor: '#666666'
+            }}
+          />
+          <Radiogroup 
+            name="custom-3" 
+            label="Green Plan" 
+            variant='custom'
+            colorVision='deuteranopia'
+            options={options.slice(0, 3)} 
+            value={selectedValue} 
+            onChange={setSelectedValue}
+            customColors={{
+              defaultColor: '#28A745',
+              defaultBorderColor: '#CCCCCC',
+              defaultBorderColorHover: '#28A745',
+              defaultBorderColorFocus: '#28A745',
+              defaultLabelColor: '#000000',
+              defaultDescriptionColor: '#666666',
+              protanopiaColor: '#28A745',
+              protanopiaBorderColor: '#CCCCCC',
+              protanopiaBorderColorHover: '#28A745',
+              protanopiaBorderColorFocus: '#28A745',
+              protanopiaLabelColor: '#000000',
+              protanopiaDescriptionColor: '#666666',
+              deuteranopiaColor: '#4CAF50',
+              deuteranopiaBorderColor: '#CCCCCC',
+              deuteranopiaBorderColorHover: '#4CAF50',
+              deuteranopiaBorderColorFocus: '#4CAF50',
+              deuteranopiaLabelColor: '#000000',
+              deuteranopiaDescriptionColor: '#666666',
+              tritanopiaColor: '#4CAF50',
+              tritanopiaBorderColor: '#CCCCCC',
+              tritanopiaBorderColorHover: '#4CAF50',
+              tritanopiaBorderColorFocus: '#4CAF50',
+              tritanopiaLabelColor: '#000000',
+              tritanopiaDescriptionColor: '#666666'
+            }}
+          />
+          <Radiogroup 
+            name="custom-4" 
+            label="Purple Plan" 
+            variant='custom'
+            colorVision='tritanopia'
+            options={options.slice(0, 3)} 
+            value={selectedValue} 
+            onChange={setSelectedValue}
+            customColors={{
+              defaultColor: '#A855F7',
+              defaultBorderColor: '#CCCCCC',
+              defaultBorderColorHover: '#A855F7',
+              defaultBorderColorFocus: '#A855F7',
+              defaultLabelColor: '#000000',
+              defaultDescriptionColor: '#666666',
+              protanopiaColor: '#A855F7',
+              protanopiaBorderColor: '#CCCCCC',
+              protanopiaBorderColorHover: '#A855F7',
+              protanopiaBorderColorFocus: '#A855F7',
+              protanopiaLabelColor: '#000000',
+              protanopiaDescriptionColor: '#666666',
+              deuteranopiaColor: '#A855F7',
+              deuteranopiaBorderColor: '#CCCCCC',
+              deuteranopiaBorderColorHover: '#A855F7',
+              deuteranopiaBorderColorFocus: '#A855F7',
+              deuteranopiaLabelColor: '#000000',
+              deuteranopiaDescriptionColor: '#666666',
+              tritanopiaColor: '#D946EF',
+              tritanopiaBorderColor: '#CCCCCC',
+              tritanopiaBorderColorHover: '#D946EF',
+              tritanopiaBorderColorFocus: '#D946EF',
+              tritanopiaLabelColor: '#000000',
+              tritanopiaDescriptionColor: '#666666'
+            }}
+          />
+          <Radiogroup 
+            name="custom-5" 
+            label="Pink Plan" 
+            variant='custom'
+            options={options.slice(0, 3)} 
+            value={selectedValue} 
+            onChange={setSelectedValue}
+            customColors={{
+              defaultColor: '#EC4899',
+              defaultBorderColor: '#CCCCCC',
+              defaultBorderColorHover: '#EC4899',
+              defaultBorderColorFocus: '#EC4899',
+              defaultLabelColor: '#000000',
+              defaultDescriptionColor: '#666666',
+              protanopiaColor: '#F472B6',
+              protanopiaBorderColor: '#EC4899',
+              protanopiaBorderColorHover: '#F472B6',
+              protanopiaBorderColorFocus: '#F472B6',
+              protanopiaLabelColor: '#000000',
+              protanopiaDescriptionColor: '#666666',
+              deuteranopiaColor: '#F472B6',
+              deuteranopiaBorderColor: '#EC4899',
+              deuteranopiaBorderColorHover: '#F472B6',
+              deuteranopiaBorderColorFocus: '#F472B6',
+              deuteranopiaLabelColor: '#000000',
+              deuteranopiaDescriptionColor: '#666666',
+              tritanopiaColor: '#F472B6',
+              tritanopiaBorderColor: '#EC4899',
+              tritanopiaBorderColorHover: '#F472B6',
+              tritanopiaBorderColorFocus: '#F472B6',
+              tritanopiaLabelColor: '#000000',
+              tritanopiaDescriptionColor: '#666666'
+            }}
+          />
+        </div>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'custom')}>
+              {copiedButton === 'custom' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> &#123; <span className={styles.component}>Radiogroup</span> &#125; <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/>
+              <span className={styles.keyword}>import</span> &#123; <span className={styles.component}>useState</span> &#125; <span className={styles.keyword}>from</span> <span className={styles.string}>'react'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() &#123;<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> [<span className={styles.component}>plan</span>, <span className={styles.component}>setPlan</span>] <span className={styles.operator}>=</span> <span className={styles.function}>useState</span>(<span className={styles.string}>'basic'</span>);<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> <span className={styles.component}>options</span> <span className={styles.operator}>=</span> [<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&#123; <span className={styles.property}>value</span>: <span className={styles.string}>'basic'</span>, <span className={styles.property}>label</span>: <span className={styles.string}>'Basic'</span>, <span className={styles.property}>description</span>: <span className={styles.string}>'Perfect for individuals'</span> &#125;,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&#123; <span className={styles.property}>value</span>: <span className={styles.string}>'pro'</span>, <span className={styles.property}>label</span>: <span className={styles.string}>'Pro'</span>, <span className={styles.property}>description</span>: <span className={styles.string}>'Best for teams'</span> &#125;,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&#123; <span className={styles.property}>value</span>: <span className={styles.string}>'enterprise'</span>, <span className={styles.property}>label</span>: <span className={styles.string}>'Enterprise'</span>, <span className={styles.property}>description</span>: <span className={styles.string}>'For large organizations'</span> &#125;<br/>
+              &nbsp;&nbsp;];<br/><br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Radiogroup</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>name</span><span className={styles.operator}>=</span><span className={styles.string}>'plan'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>label</span><span className={styles.operator}>=</span><span className={styles.string}>'Choose your plan'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>'protanopia'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>options</span><span className={styles.operator}>=</span>&#123;options&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>value</span><span className={styles.operator}>=</span>&#123;plan&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>onChange</span><span className={styles.operator}>=</span>&#123;setPlan&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>={'{'}</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.string}>'#1976D2'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorderColor</span>: <span className={styles.string}>'#CCCCCC'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorderColorHover</span>: <span className={styles.string}>'#1976D2'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorderColorFocus</span>: <span className={styles.string}>'#1976D2'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultLabelColor</span>: <span className={styles.string}>'#000000'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultDescriptionColor</span>: <span className={styles.string}>'#666666'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Protanopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.string}>'#FFA500'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBorderColor</span>: <span className={styles.string}>'#E6B800'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBorderColorHover</span>: <span className={styles.string}>'#FFA500'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBorderColorFocus</span>: <span className={styles.string}>'#FFA500'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaLabelColor</span>: <span className={styles.string}>'#000000'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaDescriptionColor</span>: <span className={styles.string}>'#666666'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.string}>'#9C27B0'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderColor</span>: <span className={styles.string}>'#E6B8D7'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderColorHover</span>: <span className={styles.string}>'#9C27B0'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderColorFocus</span>: <span className={styles.string}>'#9C27B0'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaLabelColor</span>: <span className={styles.string}>'#000000'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaDescriptionColor</span>: <span className={styles.string}>'#666666'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Tritanopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.string}>'#00BCD4'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBorderColor</span>: <span className={styles.string}>'#B3E5FC'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBorderColorHover</span>: <span className={styles.string}>'#00BCD4'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBorderColorFocus</span>: <span className={styles.string}>'#00BCD4'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaLabelColor</span>: <span className={styles.string}>'#000000'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaDescriptionColor</span>: <span className={styles.string}>'#666666'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'}'}&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
               &nbsp;&nbsp;);<br/>
               &#125;
             </code>

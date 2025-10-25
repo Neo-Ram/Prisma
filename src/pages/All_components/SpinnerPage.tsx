@@ -162,6 +162,34 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Spinner } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  return (
+    <Spinner
+      variant="primary"
+      colorVision="protanopia"
+      size="md"
+      spinnerVariant="1"
+      label="Loading..."
+      customColors={{
+        // Normal vision colors
+        defaultColor: '#007bff',
+
+        // Protanopia (Red-blind)
+        protanopiaColor: '#3399ff',
+
+        // Deuteranopia (Green-blind)
+        deuteranopiaColor: '#4f83cc',
+
+        // Tritanopia (Blue-blind)
+        tritanopiaColor: '#ffcc00'
+      }}
+    />
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -193,7 +221,7 @@ function Demo() {
             <code>
               <span className={styles.keyword}>interface</span> <span className={styles.component}>SpinnerProps</span> {'{'}<br/>
               &nbsp;&nbsp;<span className={styles.comment}>// Styling properties</span><br/>
-              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>size</span>?: <span className={styles.string}>'xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'xl'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>spinnerVariant</span>?: <span className={styles.string}>'1'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'2'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'3'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'4'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'5'</span>; <span className={styles.comment}>// Visual spinner style</span><br/><br/>
 
@@ -606,6 +634,77 @@ function Demo() {
               &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
               &nbsp;&nbsp;);<br/>
               {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomSpinnerColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomSpinnerColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Spinner stroke color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <div className={styles.centered}>
+          <Spinner variant='custom' size='lg' spinnerVariant='1' label='Blue Custom' customColors={{ defaultColor: '#007BFF', protanopiaColor: '#FFA500', deuteranopiaColor: '#9C27B0', tritanopiaColor: '#00BCD4' }} />
+          <Spinner variant='custom' colorVision='protanopia' size='lg' spinnerVariant='2' label='Orange Custom' customColors={{ defaultColor: '#FF8C00', protanopiaColor: '#FFB84D', deuteranopiaColor: '#FFB84D', tritanopiaColor: '#FFB84D' }} />
+          <Spinner variant='custom' colorVision='deuteranopia' size='lg' spinnerVariant='3' label='Green Custom' customColors={{ defaultColor: '#28A745', protanopiaColor: '#28A745', deuteranopiaColor: '#4CAF50', tritanopiaColor: '#4CAF50' }} />
+          <Spinner variant='custom' colorVision='tritanopia' size='lg' spinnerVariant='4' label='Purple Custom' customColors={{ defaultColor: '#A855F7', protanopiaColor: '#A855F7', deuteranopiaColor: '#A855F7', tritanopiaColor: '#D946EF' }} />
+          <Spinner variant='custom' size='lg' spinnerVariant='5' label='Pink Custom' customColors={{ defaultColor: '#EC4899', protanopiaColor: '#F472B6', deuteranopiaColor: '#F472B6', tritanopiaColor: '#F472B6' }} />
+        </div>
+
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'custom')}>
+              {copiedButton === 'custom' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>Spinner</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Spinner</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>"primary"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>"protanopia"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>size</span><span className={styles.operator}>=</span><span className={styles.string}>"md"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>spinnerVariant</span><span className={styles.operator}>=</span><span className={styles.string}>"1"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>label</span><span className={styles.operator}>=</span><span className={styles.string}>"Loading..."</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>={'{'}</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.string}>'#007bff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.string}>'#3399ff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.string}>'#4f83cc'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.string}>'#ffcc00'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'}'}&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              &#125;
             </code>
           </div>
         </div>

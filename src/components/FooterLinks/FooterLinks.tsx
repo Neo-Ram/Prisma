@@ -8,7 +8,7 @@ const data = [
     title: 'Project',
     links: [
       { label: 'Ramon Franco GitHub', link: 'https://github.com/Neo-Ram' },
-      { label: 'Omar Beltran GitHub', link: '#' },
+      { label: 'Omar Beltran GitHub', link: 'https://github.com/Omarius016' },
     ],
   },
 ];

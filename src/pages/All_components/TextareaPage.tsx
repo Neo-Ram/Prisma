@@ -4,6 +4,11 @@ import { useState } from 'react';
 
 const TextareaPage = () => {
   const [copiedButton, setCopiedButton] = useState<string | null>(null);
+  const [customText1, setCustomText1] = useState('');
+  const [customText2, setCustomText2] = useState('');
+  const [customText3, setCustomText3] = useState('');
+  const [customText4, setCustomText4] = useState('');
+  const [customText5, setCustomText5] = useState('');
 
   const codeString = `import { Textarea } from 'neo-ram-prisma';
 import 'neo-ram-prisma/style.css';
@@ -169,6 +174,54 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Textarea } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+import { useState } from 'react';
+
+function Demo() {
+  const [text, setText] = useState('');
+  return (
+    <Textarea
+      label="Comments"
+      placeholder="Enter your message..."
+      colorVision="deuteranopia"
+      variant='custom'
+      value={text}
+      onChange={setText}
+      rows={5}
+      customColors={{
+        // Normal vision colors
+        defaultBg: '#ffffff',
+        defaultBorder: '#cbd2dd',
+        defaultBorderFocus: '#007bff',
+        defaultColor: '#1a1f2b',
+        defaultPlaceholder: '#6b7280',
+
+        // Protanopia (Red-blind)
+        protanopiaBg: '#ffffff',
+        protanopiaBorder: '#cbd2dd',
+        protanopiaBorderFocus: '#3399ff',
+        protanopiaColor: '#1a1f2b',
+        protanopiaPlaceholder: '#6b7280',
+
+        // Deuteranopia (Green-blind)
+        deuteranopiaBg: '#ffffff',
+        deuteranopiaBorder: '#cbd2dd',
+        deuteranopiaBorderFocus: '#4f83cc',
+        deuteranopiaColor: '#1a1f2b',
+        deuteranopiaPlaceholder: '#6b7280',
+
+        // Tritanopia (Blue-blind)
+        tritanopiaBg: '#ffffff',
+        tritanopiaBorder: '#cbd2dd',
+        tritanopiaBorderFocus: '#ffcc00',
+        tritanopiaColor: '#1a1f2b',
+        tritanopiaPlaceholder: '#6b7280'
+      }}
+    />
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -197,7 +250,7 @@ function Demo() {
           </div>
           <div className={styles.code}>
             <code>
-              <span className={styles.keyword}>type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span><br/>
+              <span className={styles.keyword}>type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>ColorVision</span> <span className={styles.operator}>=</span> <span className={styles.string}>'normal'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'protanopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'deuteranopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'tritanopia'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>AccessibilityMode</span> <span className={styles.operator}>=</span> <span className={styles.string}>'default'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'low-vision'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'high-contrast'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>Size</span> <span className={styles.operator}>=</span> <span className={styles.string}>'xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'xl'</span><br/>
@@ -620,6 +673,103 @@ function Demo() {
               &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
               &nbsp;&nbsp;);<br/>
               {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomTextareaColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomTextareaColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Background color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Border color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorderFocus</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Focus border</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultPlaceholder</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Placeholder color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorderFocus</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaPlaceholder</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderFocus</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaPlaceholder</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorderFocus</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaPlaceholder</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <div className={styles.centered}>
+          <Textarea variant='custom' label="Blue Custom" placeholder="Enter text..." value={customText1} onChange={(e) => setCustomText1(e.target.value)} rows={3} customColors={{ defaultBg: '#FFFFFF', defaultBorder: '#007BFF', defaultBorderFocus: '#0056B3', defaultColor: '#000000', defaultPlaceholder: '#999999', protanopiaBg: '#FFFFFF', protanopiaBorder: '#FFA500', protanopiaBorderFocus: '#FF8C00', protanopiaColor: '#000000', protanopiaPlaceholder: '#999999', deuteranopiaBg: '#FFFFFF', deuteranopiaBorder: '#9C27B0', deuteranopiaBorderFocus: '#7B1FA2', deuteranopiaColor: '#000000', deuteranopiaPlaceholder: '#999999', tritanopiaBg: '#FFFFFF', tritanopiaBorder: '#00BCD4', tritanopiaBorderFocus: '#0097A7', tritanopiaColor: '#000000', tritanopiaPlaceholder: '#999999' }} />
+          <Textarea variant='custom' colorVision='protanopia' label="Orange Custom" placeholder="Enter text..." value={customText2} onChange={(e) => setCustomText2(e.target.value)} rows={3} customColors={{ defaultBg: '#FFFFFF', defaultBorder: '#FF8C00', defaultBorderFocus: '#E67E00', defaultColor: '#000000', defaultPlaceholder: '#999999', protanopiaBg: '#FFFFFF', protanopiaBorder: '#FFA500', protanopiaBorderFocus: '#FF8C00', protanopiaColor: '#000000', protanopiaPlaceholder: '#999999', deuteranopiaBg: '#FFFFFF', deuteranopiaBorder: '#FFA500', deuteranopiaBorderFocus: '#FF8C00', deuteranopiaColor: '#000000', deuteranopiaPlaceholder: '#999999', tritanopiaBg: '#FFFFFF', tritanopiaBorder: '#FFA500', tritanopiaBorderFocus: '#FF8C00', tritanopiaColor: '#000000', tritanopiaPlaceholder: '#999999' }} />
+          <Textarea variant='custom' colorVision='deuteranopia' label="Green Custom" placeholder="Enter text..." value={customText3} onChange={(e) => setCustomText3(e.target.value)} rows={3} customColors={{ defaultBg: '#FFFFFF', defaultBorder: '#28A745', defaultBorderFocus: '#1E7E34', defaultColor: '#000000', defaultPlaceholder: '#999999', protanopiaBg: '#FFFFFF', protanopiaBorder: '#28A745', protanopiaBorderFocus: '#1E7E34', protanopiaColor: '#000000', protanopiaPlaceholder: '#999999', deuteranopiaBg: '#FFFFFF', deuteranopiaBorder: '#4CAF50', deuteranopiaBorderFocus: '#2E7D32', deuteranopiaColor: '#000000', deuteranopiaPlaceholder: '#999999', tritanopiaBg: '#FFFFFF', tritanopiaBorder: '#4CAF50', tritanopiaBorderFocus: '#2E7D32', tritanopiaColor: '#000000', tritanopiaPlaceholder: '#999999' }} />
+          <Textarea variant='custom' colorVision='tritanopia' label="Purple Custom" placeholder="Enter text..." value={customText4} onChange={(e) => setCustomText4(e.target.value)} rows={3} customColors={{ defaultBg: '#FFFFFF', defaultBorder: '#A855F7', defaultBorderFocus: '#7E22CE', defaultColor: '#000000', defaultPlaceholder: '#999999', protanopiaBg: '#FFFFFF', protanopiaBorder: '#A855F7', protanopiaBorderFocus: '#7E22CE', protanopiaColor: '#000000', protanopiaPlaceholder: '#999999', deuteranopiaBg: '#FFFFFF', deuteranopiaBorder: '#A855F7', deuteranopiaBorderFocus: '#7E22CE', deuteranopiaColor: '#000000', deuteranopiaPlaceholder: '#999999', tritanopiaBg: '#FFFFFF', tritanopiaBorder: '#D946EF', tritanopiaBorderFocus: '#A855F7', tritanopiaColor: '#000000', tritanopiaPlaceholder: '#999999' }} />
+          <Textarea variant='custom' label="Pink Custom" placeholder="Enter text..." value={customText5} onChange={(e) => setCustomText5(e.target.value)} rows={3} customColors={{ defaultBg: '#FFFFFF', defaultBorder: '#EC4899', defaultBorderFocus: '#BE185D', defaultColor: '#000000', defaultPlaceholder: '#999999', protanopiaBg: '#FFFFFF', protanopiaBorder: '#F472B6', protanopiaBorderFocus: '#EC4899', protanopiaColor: '#000000', protanopiaPlaceholder: '#999999', deuteranopiaBg: '#FFFFFF', deuteranopiaBorder: '#F472B6', deuteranopiaBorderFocus: '#EC4899', deuteranopiaColor: '#000000', deuteranopiaPlaceholder: '#999999', tritanopiaBg: '#FFFFFF', tritanopiaBorder: '#F472B6', tritanopiaBorderFocus: '#EC4899', tritanopiaColor: '#000000', tritanopiaPlaceholder: '#999999' }} />
+        </div>
+
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'custom')}>
+              {copiedButton === 'custom' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>Textarea</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>useState</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'react'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> [<span className={styles.component}>text</span>, <span className={styles.component}>setText</span>] <span className={styles.operator}>=</span> <span className={styles.function}>useState</span>(<span className={styles.string}>''</span>);<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Textarea</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>label</span><span className={styles.operator}>=</span><span className={styles.string}>"Comments"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>placeholder</span><span className={styles.operator}>=</span><span className={styles.string}>"Enter your message..."</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>"deuteranopia"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>value</span><span className={styles.operator}>=</span>{'{'}<span className={styles.component}>text</span>{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>onChange</span><span className={styles.operator}>=</span>{'{'}<span className={styles.component}>setText</span>{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>rows</span><span className={styles.operator}>=</span>{'{'}5{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>={'{'}</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.string}>'#ffffff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.string}>'#cbd2dd'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorderFocus</span>: <span className={styles.string}>'#007bff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.string}>'#1a1f2b'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultPlaceholder</span>: <span className={styles.string}>'#6b7280'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.string}>'#ffffff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorder</span>: <span className={styles.string}>'#cbd2dd'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorderFocus</span>: <span className={styles.string}>'#4f83cc'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.string}>'#1a1f2b'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaPlaceholder</span>: <span className={styles.string}>'#6b7280'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'}'}&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              &#125;
             </code>
           </div>
         </div>

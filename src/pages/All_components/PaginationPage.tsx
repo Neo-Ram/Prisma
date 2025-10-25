@@ -15,6 +15,11 @@ const PaginationPage = () => {
   const [currentPageTritanopia, setCurrentPageTritanopia] = useState(6);
   const [currentPageLowVision, setCurrentPageLowVision] = useState(3);
   const [currentPageHighContrast, setCurrentPageHighContrast] = useState(7);
+  const [currentPageCustom1, setCurrentPageCustom1] = useState(1);
+  const [currentPageCustom2, setCurrentPageCustom2] = useState(2);
+  const [currentPageCustom3, setCurrentPageCustom3] = useState(3);
+  const [currentPageCustom4, setCurrentPageCustom4] = useState(4);
+  const [currentPageCustom5, setCurrentPageCustom5] = useState(5);
 
   const codeString = `import { Pagination } from 'neo-ram-prisma';
 import 'neo-ram-prisma/style.css';
@@ -186,6 +191,41 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Pagination } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  const [page, setPage] = useState(1);
+
+  return (
+    <Pagination
+      currentPage={page}
+      totalPages={10}
+      onPageChange={setPage}
+      variant='custom'
+      colorVision='tritanopia'
+      customColors={{
+        // Normal vision
+        defaultColorActive: '#FFFFFF',
+        defaultBgActive: '#007BFF',
+        defaultShadowFocus: '0 0 0 3px rgba(11,92,255,.15)',
+        // Protanopia
+        protanopiaColorActive: '#FFFFFF',
+        protanopiaBgActive: '#3399FF',
+        protanopiaShadowFocus: '0 0 0 3px rgba(51,153,255,.15)',
+        // Deuteranopia
+        deuteranopiaColorActive: '#FFFFFF',
+        deuteranopiaBgActive: '#4F83CC',
+        deuteranopiaShadowFocus: '0 0 0 3px rgba(79,131,204,.15)',
+        // Tritanopia
+        tritanopiaColorActive: '#FFFFFF',
+        tritanopiaBgActive: '#D946EF',
+        tritanopiaShadowFocus: '0 0 0 3px rgba(217,70,239,.15)'
+      }}
+    />
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -221,7 +261,7 @@ function Demo() {
               &nbsp;&nbsp;<span className={styles.property}>totalPages</span>: <span className={styles.keyword}>number</span>; <span className={styles.comment}>// Total number of pages</span><br/>
               &nbsp;&nbsp;<span className={styles.property}>onPageChange</span>: (<span className={styles.property}>page</span>: <span className={styles.keyword}>number</span>) <span className={styles.operator}>=&gt;</span> <span className={styles.keyword}>void</span>; <span className={styles.comment}>// Page change handler</span><br/><br/>
               &nbsp;&nbsp;<span className={styles.comment}>// Styling properties</span><br/>
-              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>size</span>?: <span className={styles.string}>'xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'xl'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>fontSize</span>?: <span className={styles.string}>'fs-xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-xl'</span>;<br/><br/>
               &nbsp;&nbsp;<span className={styles.comment}>// Accessibility properties</span><br/>
@@ -705,6 +745,170 @@ function Demo() {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>onPageChange</span><span className={styles.operator}>=</span>{'{'}setCurrentPage{'}'}<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'secondary'</span><br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>accessibility</span><span className={styles.operator}>=</span><span className={styles.string}>'high-contrast'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomPaginationColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomPaginationColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColorActive</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Active page text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBgActive</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Active page background</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultShadowFocus</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Focus shadow effect</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColorActive</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBgActive</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaShadowFocus</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorActive</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBgActive</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaShadowFocus</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColorActive</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBgActive</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaShadowFocus</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <div className={styles.centered}>
+          <Pagination currentPage={currentPageCustom1} totalPages={10} onPageChange={setCurrentPageCustom1} variant='custom' customColors={{
+            defaultColorActive: '#FFFFFF',
+            defaultBgActive: '#007BFF',
+            defaultShadowFocus: '0 0 0 3px rgba(11,92,255,.15)',
+            protanopiaColorActive: '#FFFFFF',
+            protanopiaBgActive: '#007BFF',
+            protanopiaShadowFocus: '0 0 0 3px rgba(11,92,255,.15)',
+            deuteranopiaColorActive: '#FFFFFF',
+            deuteranopiaBgActive: '#007BFF',
+            deuteranopiaShadowFocus: '0 0 0 3px rgba(11,92,255,.15)',
+            tritanopiaColorActive: '#FFFFFF',
+            tritanopiaBgActive: '#007BFF',
+            tritanopiaShadowFocus: '0 0 0 3px rgba(11,92,255,.15)'
+          }} />
+        </div>
+        <div className={styles.centered}>
+          <Pagination currentPage={currentPageCustom2} totalPages={10} onPageChange={setCurrentPageCustom2} variant='custom' colorVision='protanopia' customColors={{
+            defaultColorActive: '#FFFFFF',
+            defaultBgActive: '#FF8C00',
+            defaultShadowFocus: '0 0 0 3px rgba(255,140,0,.15)',
+            protanopiaColorActive: '#FFFFFF',
+            protanopiaBgActive: '#FFB84D',
+            protanopiaShadowFocus: '0 0 0 3px rgba(255,184,77,.15)',
+            deuteranopiaColorActive: '#FFFFFF',
+            deuteranopiaBgActive: '#FFB84D',
+            deuteranopiaShadowFocus: '0 0 0 3px rgba(255,184,77,.15)',
+            tritanopiaColorActive: '#FFFFFF',
+            tritanopiaBgActive: '#FFB84D',
+            tritanopiaShadowFocus: '0 0 0 3px rgba(255,184,77,.15)'
+          }} />
+        </div>
+        <div className={styles.centered}>
+          <Pagination currentPage={currentPageCustom3} totalPages={10} onPageChange={setCurrentPageCustom3} variant='custom' colorVision='deuteranopia' customColors={{
+            defaultColorActive: '#FFFFFF',
+            defaultBgActive: '#28A745',
+            defaultShadowFocus: '0 0 0 3px rgba(40,167,69,.15)',
+            protanopiaColorActive: '#FFFFFF',
+            protanopiaBgActive: '#28A745',
+            protanopiaShadowFocus: '0 0 0 3px rgba(40,167,69,.15)',
+            deuteranopiaColorActive: '#FFFFFF',
+            deuteranopiaBgActive: '#4CAF50',
+            deuteranopiaShadowFocus: '0 0 0 3px rgba(76,175,80,.15)',
+            tritanopiaColorActive: '#FFFFFF',
+            tritanopiaBgActive: '#4CAF50',
+            tritanopiaShadowFocus: '0 0 0 3px rgba(76,175,80,.15)'
+          }} />
+        </div>
+        <div className={styles.centered}>
+          <Pagination currentPage={currentPageCustom4} totalPages={10} onPageChange={setCurrentPageCustom4} variant='custom' colorVision='tritanopia' customColors={{
+            defaultColorActive: '#FFFFFF',
+            defaultBgActive: '#A855F7',
+            defaultShadowFocus: '0 0 0 3px rgba(168,85,247,.15)',
+            protanopiaColorActive: '#FFFFFF',
+            protanopiaBgActive: '#A855F7',
+            protanopiaShadowFocus: '0 0 0 3px rgba(168,85,247,.15)',
+            deuteranopiaColorActive: '#FFFFFF',
+            deuteranopiaBgActive: '#A855F7',
+            deuteranopiaShadowFocus: '0 0 0 3px rgba(168,85,247,.15)',
+            tritanopiaColorActive: '#FFFFFF',
+            tritanopiaBgActive: '#D946EF',
+            tritanopiaShadowFocus: '0 0 0 3px rgba(217,70,239,.15)'
+          }} />
+        </div>
+        <div className={styles.centered}>
+          <Pagination currentPage={currentPageCustom5} totalPages={10} onPageChange={setCurrentPageCustom5} variant='custom' size='lg' customColors={{
+            defaultColorActive: '#FFFFFF',
+            defaultBgActive: '#EC4899',
+            defaultShadowFocus: '0 0 0 3px rgba(236,72,153,.15)',
+            protanopiaColorActive: '#FFFFFF',
+            protanopiaBgActive: '#F472B6',
+            protanopiaShadowFocus: '0 0 0 3px rgba(244,114,182,.15)',
+            deuteranopiaColorActive: '#FFFFFF',
+            deuteranopiaBgActive: '#F472B6',
+            deuteranopiaShadowFocus: '0 0 0 3px rgba(244,114,182,.15)',
+            tritanopiaColorActive: '#FFFFFF',
+            tritanopiaBgActive: '#F472B6',
+            tritanopiaShadowFocus: '0 0 0 3px rgba(244,114,182,.15)'
+          }} />
+        </div>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'custom')}>
+              {copiedButton === 'custom' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>Pagination</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> [<span className={styles.component}>page</span>, <span className={styles.component}>setPage</span>] <span className={styles.operator}>=</span> <span className={styles.function}>useState</span>(<span className={styles.number}>1</span>);<br/><br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Pagination</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>currentPage</span><span className={styles.operator}>=</span>{'{'}page{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>totalPages</span><span className={styles.operator}>=</span>{'{'}10{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>onPageChange</span><span className={styles.operator}>=</span>{'{'}setPage{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>'tritanopia'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>={'{'}</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Normal vision</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColorActive</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBgActive</span>: <span className={styles.string}>'#007BFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultShadowFocus</span>: <span className={styles.string}>'0 0 0 3px rgba(11,92,255,.15)'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Protanopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColorActive</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBgActive</span>: <span className={styles.string}>'#3399FF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaShadowFocus</span>: <span className={styles.string}>'0 0 0 3px rgba(51,153,255,.15)'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorActive</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBgActive</span>: <span className={styles.string}>'#4F83CC'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaShadowFocus</span>: <span className={styles.string}>'0 0 0 3px rgba(79,131,204,.15)'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Tritanopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColorActive</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBgActive</span>: <span className={styles.string}>'#D946EF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaShadowFocus</span>: <span className={styles.string}>'0 0 0 3px rgba(217,70,239,.15)'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'}'}&#125;<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
               &nbsp;&nbsp;);<br/>
               {'}'}

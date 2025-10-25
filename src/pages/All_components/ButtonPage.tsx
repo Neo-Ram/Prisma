@@ -94,6 +94,46 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Button } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  const customButtonColors = {
+    // Normal vision
+    defaultColor: '#FFFFFF',
+    defaultColorHover: '#E0E0E0',
+    defaultColorActive: '#C0C0C0',
+    
+    // Protanopia (Red-blind)
+    protanopiaColor: '#FFAA33',
+    protanopiaColorHover: '#FF6600',
+    protanopiaColorActive: '#CC4400',
+    
+    // Deuteranopia (Green-blind)
+    deuteranopiaColor: '#00AA00',
+    deuteranopiaColorHover: '#008800',
+    deuteranopiaColorActive: '#005500',
+    
+    // Tritanopia (Blue-blind)
+    tritanopiaColor: '#FF00FF',
+    tritanopiaColorHover: '#DD00DD',
+    tritanopiaColorActive: '#BB00BB',
+    
+    textColor: '#FFFFFF'
+  };
+
+  return (
+    <Button 
+      variant='custom'
+      colorVision='protanopia'
+      size='lg'
+      customColors={customButtonColors}
+    >
+      Botón Personalizado
+    </Button>
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -122,7 +162,7 @@ function Demo() {
           </div>
           <div className={styles.code}>
             <code>
-              <span className={styles.keyword}>type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span><br/>
+              <span className={styles.keyword}>type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>ColorVision</span> <span className={styles.operator}>=</span> <span className={styles.string}>'normal'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'protanopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'deuteranopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'tritanopia'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>AccessibilityMode</span> <span className={styles.operator}>=</span> <span className={styles.string}>'default'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'low-vision'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'high-contrast'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>Size</span> <span className={styles.operator}>=</span> <span className={styles.string}>'xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'xl'</span><br/>
@@ -437,6 +477,213 @@ function Demo() {
               <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() &#123;<br/>
               &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Button</span> <span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'secondary'</span> <span className={styles.property}>accessibility</span><span className={styles.operator}>=</span><span className={styles.string}>'high-contrast'</span>&gt;High Contrast&lt;/<span className={styles.component}>Button</span>&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              &#125;
+            </code>
+          </div>
+        </div>
+        
+        <h3>Custom Colors</h3>
+        <p>Complete customization of button colors across all color vision modes with customizable text and background colors for each vision type.</p>
+        
+        <h3>Custom Colors Interface</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomButtonColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomButtonColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Button color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColorHover</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Hover color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColorActive</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Active/pressed color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColorActive</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorActive</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColorActive</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+              
+              &nbsp;&nbsp;<span className={styles.comment}>// Text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>textColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors Example</h3>
+        <p>Define a custom color palette to create buttons with completely custom styling across all accessibility modes:</p>
+        <div className={styles.centered}>
+          <Button 
+            variant='custom'
+            colorVision='normal'
+            customColors={{
+              defaultColor: '#FF5733',
+              defaultColorHover: '#C41E3A',
+              defaultColorActive: '#8B0000',
+              protanopiaColor: '#FFAA33',
+              protanopiaColorHover: '#FF6600',
+              protanopiaColorActive: '#CC4400',
+              deuteranopiaColor: '#00AA00',
+              deuteranopiaColorHover: '#008800',
+              deuteranopiaColorActive: '#005500',
+              tritanopiaColor: '#FF00FF',
+              tritanopiaColorHover: '#DD00DD',
+              tritanopiaColorActive: '#BB00BB',
+              textColor: '#FFFFFF'
+            }}
+          >
+            Custom Orange Button
+          </Button>
+        </div>
+        <div className={styles.centered}>
+          <Button 
+            variant='custom'
+            colorVision='protanopia'
+            customColors={{
+              defaultColor: '#FFAA33',
+              defaultColorHover: '#FF6600',
+              defaultColorActive: '#CC4400',
+              protanopiaColor: '#FFAA33',
+              protanopiaColorHover: '#FF6600',
+              protanopiaColorActive: '#CC4400',
+              deuteranopiaColor: '#00AA00',
+              deuteranopiaColorHover: '#008800',
+              deuteranopiaColorActive: '#005500',
+              tritanopiaColor: '#0000FF',
+              tritanopiaColorHover: '#0000CC',
+              tritanopiaColorActive: '#000099',
+              textColor: '#FFFFFF'
+            }}
+          >
+            Custom Yellow Button
+          </Button>
+        </div>
+        <div className={styles.centered}>
+          <Button 
+            variant='custom'
+            colorVision='deuteranopia'
+            customColors={{
+              defaultColor: '#FF5733',
+              defaultColorHover: '#C41E3A',
+              defaultColorActive: '#8B0000',
+              protanopiaColor: '#FFAA33',
+              protanopiaColorHover: '#FF6600',
+              protanopiaColorActive: '#CC4400',
+              deuteranopiaColor: '#00AA00',
+              deuteranopiaColorHover: '#008800',
+              deuteranopiaColorActive: '#005500',
+              tritanopiaColor: '#FF00FF',
+              tritanopiaColorHover: '#DD00DD',
+              tritanopiaColorActive: '#BB00BB',
+              textColor: '#FFFFFF'
+            }}
+          >
+            Custom Green Button
+          </Button>
+        </div>
+        <div className={styles.centered}>
+          <Button 
+            variant='custom'
+            colorVision='tritanopia'
+            customColors={{
+              defaultColor: '#FF5733',
+              defaultColorHover: '#C41E3A',
+              defaultColorActive: '#8B0000',
+              protanopiaColor: '#FFAA33',
+              protanopiaColorHover: '#FF6600',
+              protanopiaColorActive: '#CC4400',
+              deuteranopiaColor: '#00AA00',
+              deuteranopiaColorHover: '#008800',
+              deuteranopiaColorActive: '#005500',
+              tritanopiaColor: '#FF00FF',
+              tritanopiaColorHover: '#DD00DD',
+              tritanopiaColorActive: '#BB00BB',
+              textColor: '#FFFFFF'
+            }}
+          >
+            Custom Purple Button
+          </Button>
+        </div>
+        <div className={styles.centered}>
+          <Button 
+            variant='custom'
+            size='lg'
+            colorVision='normal'
+            customColors={{
+              defaultColor: '#003366',
+              defaultColorHover: '#004080',
+              defaultColorActive: '#002244',
+              protanopiaColor: '#336699',
+              protanopiaColorHover: '#4477BB',
+              protanopiaColorActive: '#224466',
+              deuteranopiaColor: '#0066CC',
+              deuteranopiaColorHover: '#0052A3',
+              deuteranopiaColorActive: '#003D7A',
+              tritanopiaColor: '#0099FF',
+              tritanopiaColorHover: '#0077CC',
+              tritanopiaColorActive: '#005599',
+              textColor: '#FFFFFF'
+            }}
+          >
+            Custom Blue Button
+          </Button>
+        </div>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomColorsDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'customColors')}>
+              {copiedButton === 'customColors' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> &#123; <span className={styles.component}>Button</span> &#125; <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() &#123;<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> <span className={styles.component}>customButtonColors</span> <span className={styles.operator}>=</span> &#123;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Normal vision</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.string}>'#ffffff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.string}>'#007bff'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Protanopia (Red-blind)</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.string}>'#ffffff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.string}>'#3399ff'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia (Green-blind)</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.string}>'#ffffff'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.string}>'#4f83cc'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Tritanopia (Blue-blind)</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.string}>'#000000'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBg</span>: <span className={styles.string}>'#ffcc00'</span><br/>
+              &nbsp;&nbsp;&#125;;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Button</span> <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>'normal'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>=</span>&#123;customButtonColors&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fully Customizable Button<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className={styles.component}>Button</span>&gt;<br/>
               &nbsp;&nbsp;);<br/>
               &#125;
             </code>

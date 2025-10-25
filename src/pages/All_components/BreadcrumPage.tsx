@@ -155,6 +155,53 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Breadcrumb } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  const customBreadcrumbColors = {
+    // Normal vision colors
+    defaultColor: '#6366F1',
+    defaultColorHover: '#4F46E5',
+    defaultColorCurrent: '#4C0519',
+    defaultSeparator: '#CBD5E1',
+
+    // Protanopia colors (Red-Green Blindness)
+    protanopiaColor: '#3B82F6',
+    protanopiaColorHover: '#2563EB',
+    protanopiaColorCurrent: '#1E3A8A',
+    protanopiaSeparator: '#94A3B8',
+
+    // Deuteranopia colors (Most Common Red-Green Blindness)
+    deuteranopiaColor: '#8B5CF6',
+    deuteranopiaColorHover: '#7C3AED',
+    deuteranopiaColorCurrent: '#581C87',
+    deuteranopiaSeparator: '#D1D5DB',
+
+    // Tritanopia colors (Blue-Yellow Blindness)
+    tritanopiaColor: '#D946EF',
+    tritanopiaColorHover: '#BE185D',
+    tritanopiaColorCurrent: '#7E22CE',
+    tritanopiaSeparator: '#E5E7EB'
+  };
+
+  const items = [
+    { label: "Dashboard", onClick: () => navigate('/') },
+    { label: "Projects", onClick: () => navigate('/projects') },
+    { label: "UI Library" }
+  ];
+
+  return (
+    <Breadcrumb 
+      items={items}
+      variant='custom'
+      colorVision='tritanopia'
+      customColors={customBreadcrumbColors}
+    />
+  );
+}`;
+
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -217,7 +264,7 @@ function Demo() {
               &nbsp;&nbsp;<span className={styles.property}>separator</span>?: <span className={styles.keyword}>string</span>;<br/>
               <br/>
               &nbsp;&nbsp;<span className={styles.comment}>// Styling and appearance properties</span><br/>
-              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>size</span>?: <span className={styles.string}>'small'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'medium'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'large'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>fontSize</span>?: <span className={styles.string}>'fs-xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-xl'</span>;<br/>
               <br/>
@@ -627,7 +674,212 @@ function Demo() {
             </code>
           </div>
         </div>
-      </div>
+
+        <h3>Custom Colors</h3>
+        <p>Complete customization of breadcrumb colors across all color vision modes. Each vision mode has customizable colors for total design control.</p>
+        
+        <h3>Custom Colors Interface</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomBreadcrumbColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomBreadcrumbColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColorHover</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Hover text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColorCurrent</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Current page color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultSeparator</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Separator color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColorCurrent</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaSeparator</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorCurrent</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaSeparator</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColorHover</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColorCurrent</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaSeparator</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors Example</h3>
+        <p>Define a custom color palette to create breadcrumbs with completely custom styling across all accessibility modes:</p>
+        <div className={styles.centered}>
+          <Breadcrumb 
+            items={sampleItems}
+            variant='custom'
+            colorVision='normal'
+            customColors={{
+              defaultColor: '#7C3AED',
+              defaultColorHover: '#6D28D9',
+              defaultColorCurrent: '#581C87',
+              defaultSeparator: '#E9D5FF',
+              protanopiaColor: '#F59E0B',
+              protanopiaColorHover: '#D97706',
+              protanopiaColorCurrent: '#92400E',
+              protanopiaSeparator: '#FDE68A',
+              deuteranopiaColor: '#3B82F6',
+              deuteranopiaColorHover: '#2563EB',
+              deuteranopiaColorCurrent: '#1E40AF',
+              deuteranopiaSeparator: '#BFDBFE',
+              tritanopiaColor: '#8B5CF6',
+              tritanopiaColorHover: '#7C3AED',
+              tritanopiaColorCurrent: '#6D28D9',
+              tritanopiaSeparator: '#DDD6FE'
+            }}
+          />
+        </div>
+        <div className={styles.centered}>
+          <Breadcrumb 
+            items={sampleItems}
+            variant='custom'
+            colorVision='normal'
+            customColors={{
+              defaultColor: '#0284C7',
+              defaultColorHover: '#0369A1',
+              defaultColorCurrent: '#0C4A6E',
+              defaultSeparator: '#BAE6FD',
+              protanopiaColor: '#FBBF24',
+              protanopiaColorHover: '#F59E0B',
+              protanopiaColorCurrent: '#D97706',
+              protanopiaSeparator: '#FCD34D',
+              deuteranopiaColor: '#22C55E',
+              deuteranopiaColorHover: '#16A34A',
+              deuteranopiaColorCurrent: '#166534',
+              deuteranopiaSeparator: '#BBF7D0',
+              tritanopiaColor: '#0284C7',
+              tritanopiaColorHover: '#0369A1',
+              tritanopiaColorCurrent: '#0C4A6E',
+              tritanopiaSeparator: '#BAE6FD'
+            }}
+          />
+        </div>
+        <div className={styles.centered}>
+          <Breadcrumb 
+            items={sampleItems}
+            variant='custom'
+            colorVision='normal'
+            customColors={{
+              defaultColor: '#22C55E',
+              defaultColorHover: '#16A34A',
+              defaultColorCurrent: '#166534',
+              defaultSeparator: '#BBF7D0',
+              protanopiaColor: '#FBBF24',
+              protanopiaColorHover: '#F59E0B',
+              protanopiaColorCurrent: '#D97706',
+              protanopiaSeparator: '#FCD34D',
+              deuteranopiaColor: '#3B82F6',
+              deuteranopiaColorHover: '#2563EB',
+              deuteranopiaColorCurrent: '#1E40AF',
+              deuteranopiaSeparator: '#BFDBFE',
+              tritanopiaColor: '#22C55E',
+              tritanopiaColorHover: '#16A34A',
+              tritanopiaColorCurrent: '#166534',
+              tritanopiaSeparator: '#BBF7D0'
+            }}
+          />
+        </div>
+        <div className={styles.centered}>
+          <Breadcrumb 
+            items={sampleItems}
+            variant='custom'
+            colorVision='normal'
+            customColors={{
+              defaultColor: '#F59E0B',
+              defaultColorHover: '#D97706',
+              defaultColorCurrent: '#92400E',
+              defaultSeparator: '#FED7AA',
+              protanopiaColor: '#F59E0B',
+              protanopiaColorHover: '#D97706',
+              protanopiaColorCurrent: '#92400E',
+              protanopiaSeparator: '#FDE68A',
+              deuteranopiaColor: '#3B82F6',
+              deuteranopiaColorHover: '#2563EB',
+              deuteranopiaColorCurrent: '#1E40AF',
+              deuteranopiaSeparator: '#BFDBFE',
+              tritanopiaColor: '#8B5CF6',
+              tritanopiaColorHover: '#7C3AED',
+              tritanopiaColorCurrent: '#6D28D9',
+              tritanopiaSeparator: '#DDD6FE'
+            }}
+          />
+        </div>
+        
+        </div>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomColorsDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'customColors')}>
+              {copiedButton === 'customColors' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>Breadcrumb</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> <span className={styles.component}>customBreadcrumbColors</span> <span className={styles.operator}>=</span> {'{'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.string}>'#6366F1'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColorHover</span>: <span className={styles.string}>'#4F46E5'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColorCurrent</span>: <span className={styles.string}>'#4C0519'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultSeparator</span>: <span className={styles.string}>'#CBD5E1'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.string}>'#3B82F6'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColorHover</span>: <span className={styles.string}>'#2563EB'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColorCurrent</span>: <span className={styles.string}>'#1E3A8A'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaSeparator</span>: <span className={styles.string}>'#94A3B8'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.string}>'#8B5CF6'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorHover</span>: <span className={styles.string}>'#7C3AED'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColorCurrent</span>: <span className={styles.string}>'#581C87'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaSeparator</span>: <span className={styles.string}>'#D1D5DB'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.string}>'#D946EF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColorHover</span>: <span className={styles.string}>'#BE185D'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColorCurrent</span>: <span className={styles.string}>'#7E22CE'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaSeparator</span>: <span className={styles.string}>'#E5E7EB'</span>,<br/>
+              &nbsp;&nbsp;{'}'};<br/><br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> <span className={styles.component}>items</span> <span className={styles.operator}>=</span> [<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;{'{'} <span className={styles.property}>label</span>: <span className={styles.string}>"Dashboard"</span>, <span className={styles.property}>onClick</span>: () <span className={styles.operator}>=&gt;</span> navigate('/') {'}'},<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;{'{'} <span className={styles.property}>label</span>: <span className={styles.string}>"Projects"</span>, <span className={styles.property}>onClick</span>: () <span className={styles.operator}>=&gt;</span> navigate('/projects') {'}'},<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;{'{'} <span className={styles.property}>label</span>: <span className={styles.string}>"UI Library"</span> {'}'}<br/>
+              &nbsp;&nbsp;];<br/><br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Breadcrumb</span> <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>items</span><span className={styles.operator}>=</span>{'{'}items{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>'tritanopia'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>=</span>{'{'}customBreadcrumbColors{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+      
     </>
   );
 };

@@ -18,7 +18,7 @@
     "@tabler/icons-react": "^3.35.0",
     "embla-carousel": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
-    "neo-ram-prisma": "^1.0.0",
+    "neo-ram-prisma": "^1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.9.1",

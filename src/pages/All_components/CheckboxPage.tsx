@@ -78,6 +78,40 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Checkbox } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  return (
+    <Checkbox
+      variant='custom'
+      colorVision='protanopia'
+      customColors={{
+        // Normal vision
+        defaultAccent: '#007BFF',
+        defaultBorder: '#007BFF',
+        defaultBg: '#FFFFFF',
+        defaultLabelColor: '#222222',
+        // Protanopia
+        protanopiaAccent: '#3399FF',
+        protanopiaBorder: '#3399FF',
+        protanopiaBg: '#FFFFFF',
+        protanopiaLabelColor: '#222222',
+        // Deuteranopia
+        deuteranopiaAccent: '#4F83CC',
+        deuteranopiaBorder: '#4F83CC',
+        deuteranopiaBg: '#FFFFFF',
+        deuteranopiaLabelColor: '#222222',
+        // Tritanopia
+        tritanopiaAccent: '#D946EF',
+        tritanopiaBorder: '#D946EF',
+        tritanopiaBg: '#FFFFFF',
+        tritanopiaLabelColor: '#222222'
+      }}
+    />
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -106,7 +140,7 @@ function Demo() {
           </div>
           <div className={styles.code}>
             <code>
-              <span className={styles.keyword}>export type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span>;<br/>
+              <span className={styles.keyword}>export type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span>;<br/>
               <span className={styles.keyword}>export type</span> <span className={styles.component}>ColorVision</span> <span className={styles.operator}>=</span> <span className={styles.string}>'normal'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'protanopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'deuteranopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'tritanopia'</span>;<br/>
               <span className={styles.keyword}>export type</span> <span className={styles.component}>AccessibilityMode</span> <span className={styles.operator}>=</span> <span className={styles.string}>'default'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'low-vision'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'high-contrast'</span>;<br/>
               <span className={styles.keyword}>export type</span> <span className={styles.component}>CheckboxSize</span> <span className={styles.operator}>=</span> <span className={styles.string}>'xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'xl'</span>;
@@ -360,6 +394,186 @@ function Demo() {
               <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() &#123;<br/>
               &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Checkbox</span> <span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'secondary'</span> <span className={styles.property}>accessibility</span><span className={styles.operator}>=</span><span className={styles.string}>'high-contrast'</span>&gt;&lt;/<span className={styles.component}>Checkbox</span>&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              &#125;
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomCheckboxColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomCheckboxColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultAccent</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Checkbox accent color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Border color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Background color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultLabelColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Label text color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaAccent</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaLabelColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaAccent</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaLabelColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaAccent</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaLabelColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <div className={styles.centered}>
+          <Checkbox variant='custom' customColors={{
+            defaultAccent: '#007BFF',
+            defaultBorder: '#007BFF',
+            defaultBg: '#FFFFFF',
+            defaultLabelColor: '#222222',
+            protanopiaAccent: '#007BFF',
+            protanopiaBorder: '#007BFF',
+            protanopiaBg: '#FFFFFF',
+            protanopiaLabelColor: '#222222',
+            deuteranopiaAccent: '#007BFF',
+            deuteranopiaBorder: '#007BFF',
+            deuteranopiaBg: '#FFFFFF',
+            deuteranopiaLabelColor: '#222222',
+            tritanopiaAccent: '#007BFF',
+            tritanopiaBorder: '#007BFF',
+            tritanopiaBg: '#FFFFFF',
+            tritanopiaLabelColor: '#222222'
+          }} />
+          <Checkbox variant='custom' customColors={{
+            defaultAccent: '#FF8C00',
+            defaultBorder: '#FF8C00',
+            defaultBg: '#FFFFFF',
+            defaultLabelColor: '#222222',
+            protanopiaAccent: '#FFB84D',
+            protanopiaBorder: '#FFB84D',
+            protanopiaBg: '#FFFFFF',
+            protanopiaLabelColor: '#222222',
+            deuteranopiaAccent: '#FFB84D',
+            deuteranopiaBorder: '#FFB84D',
+            deuteranopiaBg: '#FFFFFF',
+            deuteranopiaLabelColor: '#222222',
+            tritanopiaAccent: '#FFB84D',
+            tritanopiaBorder: '#FFB84D',
+            tritanopiaBg: '#FFFFFF',
+            tritanopiaLabelColor: '#222222'
+          }} colorVision='protanopia' />
+          <Checkbox variant='custom' customColors={{
+            defaultAccent: '#28A745',
+            defaultBorder: '#28A745',
+            defaultBg: '#FFFFFF',
+            defaultLabelColor: '#222222',
+            protanopiaAccent: '#28A745',
+            protanopiaBorder: '#28A745',
+            protanopiaBg: '#FFFFFF',
+            protanopiaLabelColor: '#222222',
+            deuteranopiaAccent: '#4CAF50',
+            deuteranopiaBorder: '#4CAF50',
+            deuteranopiaBg: '#FFFFFF',
+            deuteranopiaLabelColor: '#222222',
+            tritanopiaAccent: '#4CAF50',
+            tritanopiaBorder: '#4CAF50',
+            tritanopiaBg: '#FFFFFF',
+            tritanopiaLabelColor: '#222222'
+          }} colorVision='deuteranopia' />
+          <Checkbox variant='custom' customColors={{
+            defaultAccent: '#A855F7',
+            defaultBorder: '#A855F7',
+            defaultBg: '#FFFFFF',
+            defaultLabelColor: '#222222',
+            protanopiaAccent: '#A855F7',
+            protanopiaBorder: '#A855F7',
+            protanopiaBg: '#FFFFFF',
+            protanopiaLabelColor: '#222222',
+            deuteranopiaAccent: '#A855F7',
+            deuteranopiaBorder: '#A855F7',
+            deuteranopiaBg: '#FFFFFF',
+            deuteranopiaLabelColor: '#222222',
+            tritanopiaAccent: '#D946EF',
+            tritanopiaBorder: '#D946EF',
+            tritanopiaBg: '#FFFFFF',
+            tritanopiaLabelColor: '#222222'
+          }} colorVision='tritanopia' />
+          <Checkbox variant='custom' customColors={{
+            defaultAccent: '#EC4899',
+            defaultBorder: '#EC4899',
+            defaultBg: '#FFFFFF',
+            defaultLabelColor: '#222222',
+            protanopiaAccent: '#F472B6',
+            protanopiaBorder: '#F472B6',
+            protanopiaBg: '#FFFFFF',
+            protanopiaLabelColor: '#222222',
+            deuteranopiaAccent: '#F472B6',
+            deuteranopiaBorder: '#F472B6',
+            deuteranopiaBg: '#FFFFFF',
+            deuteranopiaLabelColor: '#222222',
+            tritanopiaAccent: '#F472B6',
+            tritanopiaBorder: '#F472B6',
+            tritanopiaBg: '#FFFFFF',
+            tritanopiaLabelColor: '#222222'
+          }} checkboxSize='md' />
+        </div>
+
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'custom')}>
+              {copiedButton === 'custom' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> &#123; <span className={styles.component}>Checkbox</span> &#125; <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() &#123;<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Checkbox</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>'protanopia'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>={'{'}</span><span className={styles.comment}>// Normal vision</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultAccent</span>: <span className={styles.string}>'#007BFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.string}>'#007BFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultLabelColor</span>: <span className={styles.string}>'#222222'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Protanopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaAccent</span>: <span className={styles.string}>'#3399FF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBorder</span>: <span className={styles.string}>'#3399FF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaLabelColor</span>: <span className={styles.string}>'#222222'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaAccent</span>: <span className={styles.string}>'#4F83CC'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorder</span>: <span className={styles.string}>'#4F83CC'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaLabelColor</span>: <span className={styles.string}>'#222222'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Tritanopia</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaAccent</span>: <span className={styles.string}>'#D946EF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBorder</span>: <span className={styles.string}>'#D946EF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBg</span>: <span className={styles.string}>'#FFFFFF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaLabelColor</span>: <span className={styles.string}>'#222222'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'}'}&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
               &nbsp;&nbsp;);<br/>
               &#125;
             </code>

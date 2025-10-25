@@ -4,6 +4,11 @@ import { useState } from 'react';
 
 const SliderPage = () => {
   const [copiedButton, setCopiedButton] = useState<string | null>(null);
+  const [sliderCustom1, setSliderCustom1] = useState(50);
+  const [sliderCustom2, setSliderCustom2] = useState(50);
+  const [sliderCustom3, setSliderCustom3] = useState(50);
+  const [sliderCustom4, setSliderCustom4] = useState(50);
+  const [sliderCustom5, setSliderCustom5] = useState(50);
 
   const codeString = `import { Slider } from 'neo-ram-prisma';
 import 'neo-ram-prisma/style.css';
@@ -86,6 +91,51 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Slider } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  const [value, setValue] = useState(50);
+  return (
+    <Slider
+      value={value}
+      onChange={(value) => setValue(value)}
+      label="Accessible Slider"
+      colorVision="protanopia"
+      variant='custom'
+      customColors={{
+        // Normal vision colors
+        defaultTrackBg: '#E5E7EB',
+        defaultTrackBorder: '#D1D5DB',
+        defaultFillBg: '#3B82F6',
+        defaultThumbBg: '#2563EB',
+        defaultThumbBorder: '#1E40AF',
+
+        // Protanopia (Red-blind)
+        protanopiaTrackBg: '#E5E7EB',
+        protanopiaTrackBorder: '#D1D5DB',
+        protanopiaFillBg: '#3399FF',
+        protanopiaThumbBg: '#0066FF',
+        protanopiaThumbBorder: '#0052CC',
+
+        // Deuteranopia (Green-blind)
+        deuteranopiaTrackBg: '#E5E7EB',
+        deuteranopiaTrackBorder: '#D1D5DB',
+        deuteranopiaFillBg: '#4F83CC',
+        deuteranopiaThumbBg: '#2E5090',
+        deuteranopiaThumbBorder: '#1A2D5C',
+
+        // Tritanopia (Blue-blind)
+        tritanopiaTrackBg: '#E5E7EB',
+        tritanopiaTrackBorder: '#D1D5DB',
+        tritanopiaFillBg: '#FFCC00',
+        tritanopiaThumbBg: '#E6B800',
+        tritanopiaThumbBorder: '#CC9A00'
+      }}
+    />
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -114,7 +164,7 @@ function Demo() {
           </div>
           <div className={styles.code}>
             <code>
-              <span className={styles.keyword}>type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span><br/>
+              <span className={styles.keyword}>type</span> <span className={styles.component}>Variant</span> <span className={styles.operator}>=</span> <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>ColorVision</span> <span className={styles.operator}>=</span> <span className={styles.string}>'normal'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'protanopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'deuteranopia'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'tritanopia'</span><br/>
               <span className={styles.keyword}>type</span> <span className={styles.component}>AccessibilityMode</span> <span className={styles.operator}>=</span> <span className={styles.string}>'default'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'low-vision'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'high-contrast'</span><br/>
               <span className={styles.keyword}>interface</span> <span className={styles.component}>SliderProps</span> {'{'}<br/>
@@ -419,6 +469,98 @@ function Demo() {
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Slider</span> <span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'secondary'</span> <span className={styles.property}>accessibility</span><span className={styles.operator}>=</span><span className={styles.string}>'high-contrast'</span> <span className={styles.property}>min</span><span className={styles.operator}>=</span>{'{'}0{'}'} <span className={styles.property}>max</span><span className={styles.operator}>=</span>{'{'}100{'}'} <span className={styles.property}>step</span><span className={styles.operator}>=</span>{'{'}1{'}'} <span className={styles.property}>label</span><span className={styles.operator}>=</span><span className={styles.string}>"High Contrast"</span> /&gt;<br/>
               &nbsp;&nbsp;);<br/>
               {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomSliderColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomSliderColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultTrackBg</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Track background</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultTrackBorder</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Track border</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultFillBg</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Filled portion</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultThumbBg</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Thumb color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultThumbBorder</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Thumb border</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaTrackBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaTrackBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaFillBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaThumbBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaThumbBorder</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaTrackBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaTrackBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaFillBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaThumbBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaThumbBorder</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaTrackBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaTrackBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaFillBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaThumbBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaThumbBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <div className={styles.centered}>
+          <Slider variant='custom' min={0} max={100} step={1} label="Blue Custom" value={sliderCustom1} onChange={setSliderCustom1} showValue customColors={{ defaultTrackBg: '#E5E7EB', defaultTrackBorder: '#D1D5DB', defaultFillBg: '#007BFF', defaultThumbBg: '#0056B3', defaultThumbBorder: '#003D82', protanopiaTrackBg: '#E5E7EB', protanopiaTrackBorder: '#D1D5DB', protanopiaFillBg: '#FFA500', protanopiaThumbBg: '#FF8C00', protanopiaThumbBorder: '#E67E00', deuteranopiaTrackBg: '#E5E7EB', deuteranopiaTrackBorder: '#D1D5DB', deuteranopiaFillBg: '#9C27B0', deuteranopiaThumbBg: '#7B1FA2', deuteranopiaThumbBorder: '#4A148C', tritanopiaTrackBg: '#E5E7EB', tritanopiaTrackBorder: '#D1D5DB', tritanopiaFillBg: '#00BCD4', tritanopiaThumbBg: '#0097A7', tritanopiaThumbBorder: '#006064' }} />
+          <Slider variant='custom' colorVision='protanopia' min={0} max={100} step={1} label="Orange Custom" value={sliderCustom2} onChange={setSliderCustom2} showValue customColors={{ defaultTrackBg: '#E5E7EB', defaultTrackBorder: '#D1D5DB', defaultFillBg: '#FF8C00', defaultThumbBg: '#E67E00', defaultThumbBorder: '#CC6600', protanopiaTrackBg: '#E5E7EB', protanopiaTrackBorder: '#D1D5DB', protanopiaFillBg: '#FFB84D', protanopiaThumbBg: '#FFA500', protanopiaThumbBorder: '#FF8C00', deuteranopiaTrackBg: '#E5E7EB', deuteranopiaTrackBorder: '#D1D5DB', deuteranopiaFillBg: '#FFB84D', deuteranopiaThumbBg: '#FFA500', deuteranopiaThumbBorder: '#FF8C00', tritanopiaTrackBg: '#E5E7EB', tritanopiaTrackBorder: '#D1D5DB', tritanopiaFillBg: '#FFB84D', tritanopiaThumbBg: '#FFA500', tritanopiaThumbBorder: '#FF8C00' }} />
+          <Slider variant='custom' colorVision='deuteranopia' min={0} max={100} step={1} label="Green Custom" value={sliderCustom3} onChange={setSliderCustom3} showValue customColors={{ defaultTrackBg: '#E5E7EB', defaultTrackBorder: '#D1D5DB', defaultFillBg: '#28A745', defaultThumbBg: '#1E7E34', defaultThumbBorder: '#155724', protanopiaTrackBg: '#E5E7EB', protanopiaTrackBorder: '#D1D5DB', protanopiaFillBg: '#28A745', protanopiaThumbBg: '#1E7E34', protanopiaThumbBorder: '#155724', deuteranopiaTrackBg: '#E5E7EB', deuteranopiaTrackBorder: '#D1D5DB', deuteranopiaFillBg: '#4CAF50', deuteranopiaThumbBg: '#2E7D32', deuteranopiaThumbBorder: '#1B5E20', tritanopiaTrackBg: '#E5E7EB', tritanopiaTrackBorder: '#D1D5DB', tritanopiaFillBg: '#4CAF50', tritanopiaThumbBg: '#2E7D32', tritanopiaThumbBorder: '#1B5E20' }} />
+          <Slider variant='custom' colorVision='tritanopia' min={0} max={100} step={1} label="Purple Custom" value={sliderCustom4} onChange={setSliderCustom4} showValue customColors={{ defaultTrackBg: '#E5E7EB', defaultTrackBorder: '#D1D5DB', defaultFillBg: '#A855F7', defaultThumbBg: '#7E22CE', defaultThumbBorder: '#5A1880', protanopiaTrackBg: '#E5E7EB', protanopiaTrackBorder: '#D1D5DB', protanopiaFillBg: '#A855F7', protanopiaThumbBg: '#7E22CE', protanopiaThumbBorder: '#5A1880', deuteranopiaTrackBg: '#E5E7EB', deuteranopiaTrackBorder: '#D1D5DB', deuteranopiaFillBg: '#A855F7', deuteranopiaThumbBg: '#7E22CE', deuteranopiaThumbBorder: '#5A1880', tritanopiaTrackBg: '#E5E7EB', tritanopiaTrackBorder: '#D1D5DB', tritanopiaFillBg: '#D946EF', tritanopiaThumbBg: '#A855F7', tritanopiaThumbBorder: '#7E22CE' }} />
+          <Slider variant='custom' min={0} max={100} step={1} label="Pink Custom" value={sliderCustom5} onChange={setSliderCustom5} showValue customColors={{ defaultTrackBg: '#E5E7EB', defaultTrackBorder: '#D1D5DB', defaultFillBg: '#EC4899', defaultThumbBg: '#BE185D', defaultThumbBorder: '#831843', protanopiaTrackBg: '#E5E7EB', protanopiaTrackBorder: '#D1D5DB', protanopiaFillBg: '#F472B6', protanopiaThumbBg: '#EC4899', protanopiaThumbBorder: '#BE185D', deuteranopiaTrackBg: '#E5E7EB', deuteranopiaTrackBorder: '#D1D5DB', deuteranopiaFillBg: '#F472B6', deuteranopiaThumbBg: '#EC4899', deuteranopiaThumbBorder: '#BE185D', tritanopiaTrackBg: '#E5E7EB', tritanopiaTrackBorder: '#D1D5DB', tritanopiaFillBg: '#F472B6', tritanopiaThumbBg: '#EC4899', tritanopiaThumbBorder: '#BE185D' }} />
+        </div>
+
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'custom')}>
+              {copiedButton === 'custom' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>Slider</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> [<span className={styles.component}>value</span>, <span className={styles.component}>setValue</span>] <span className={styles.operator}>=</span> <span className={styles.function}>useState</span>(<span className={styles.number}>50</span>);<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Slider</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>value</span><span className={styles.operator}>=</span>{'{'}<span className={styles.component}>value</span>{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>onChange</span><span className={styles.operator}>=</span>{'{'}<span className={styles.function}>(value)</span> {'=> setValue(value)'}{'}'}  <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>label</span><span className={styles.operator}>=</span><span className={styles.string}>"Accessible Slider"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>colorVision</span><span className={styles.operator}>=</span><span className={styles.string}>"protanopia"</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>={'{'}</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultTrackBg</span>: <span className={styles.string}>'#E5E7EB'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultTrackBorder</span>: <span className={styles.string}>'#D1D5DB'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultFillBg</span>: <span className={styles.string}>'#3B82F6'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultThumbBg</span>: <span className={styles.string}>'#2563EB'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultThumbBorder</span>: <span className={styles.string}>'#1E40AF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaFillBg</span>: <span className={styles.string}>'#3399FF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaThumbBg</span>: <span className={styles.string}>'#0066FF'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaThumbBorder</span>: <span className={styles.string}>'#0052CC'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'}'}&#125;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              &#125;
             </code>
           </div>
         </div>

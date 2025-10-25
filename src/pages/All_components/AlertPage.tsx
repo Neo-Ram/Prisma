@@ -169,6 +169,52 @@ function Demo() {
   );
 }`;
 
+  const customColorsCodeString = `import { Alert } from 'neo-ram-prisma';
+import 'neo-ram-prisma/style.css';
+
+function Demo() {
+  const customAlertColors = {
+    // Normal vision colors
+    defaultBg: '#F3E8FF',
+    defaultBorder: '#E9D5FF',
+    defaultColor: '#6B21A8',
+    defaultIconColor: '#A855F7',
+    defaultTitleColor: '#581C87',
+
+    // Protanopia colors (Red-Green Blindness)
+    protanopiaBg: '#FEF3C7',
+    protanopiaBorder: '#FDE68A',
+    protanopiaColor: '#92400E',
+    protanopiaIconColor: '#F59E0B',
+    protanopiaTitleColor: '#78350F',
+
+    // Deuteranopia colors (Most Common Red-Green Blindness)
+    deuteranopiaBg: '#DBEAFE',
+    deuteranopiaBorder: '#BFDBFE',
+    deuteranopiaColor: '#1E40AF',
+    deuteranopiaIconColor: '#3B82F6',
+    deuteranopiaTitleColor: '#1E3A8A',
+
+    // Tritanopia colors (Blue-Yellow Blindness)
+    tritanopiaBg: '#F5F3FF',
+    tritanopiaBorder: '#EDE9FE',
+    tritanopiaColor: '#4C1D95',
+    tritanopiaIconColor: '#8B5CF6',
+    tritanopiaTitleColor: '#3C0F7B'
+  };
+
+  return (
+    <Alert 
+      title='Custom Purple Alert'
+      variant='custom'          
+      colorVision='normal'
+      customColors={customAlertColors}
+    >
+      Purple custom alert accessible to colorblind users
+    </Alert>
+  );
+}`;
+
   const copyToClipboard = (code: string, buttonId: string) => {
     navigator.clipboard.writeText(code)
       .then(() => {
@@ -204,7 +250,7 @@ function Demo() {
               &nbsp;&nbsp;<span className={styles.property}>title</span>?: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Optional alert title</span><br/><br/>
               
               &nbsp;&nbsp;<span className={styles.comment}>// Styling properties</span><br/>
-              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>variant</span>?: <span className={styles.string}>'primary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'secondary'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'danger'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'custom'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>type</span>?: <span className={styles.string}>'info'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'success'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'warning'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'error'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'neutral'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>size</span>?: <span className={styles.string}>'xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'xl'</span>;<br/>
               &nbsp;&nbsp;<span className={styles.property}>fontSize</span>?: <span className={styles.string}>'fs-xs'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-sm'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-md'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-lg'</span> <span className={styles.operator}>|</span> <span className={styles.string}>'fs-xl'</span>;<br/>
@@ -222,7 +268,11 @@ function Demo() {
 
               &nbsp;&nbsp;<span className={styles.comment}>// Icon properties</span><br/>
               &nbsp;&nbsp;<span className={styles.property}>icon</span>?: <span className={styles.component}>React.ReactNode</span>; <span className={styles.comment}>// Custom icon</span><br/>
-              &nbsp;&nbsp;<span className={styles.property}>showIcon</span>?: <span className={styles.keyword}>boolean</span>; <span className={styles.comment}>// Show/hide icon</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>showIcon</span>?: <span className={styles.keyword}>boolean</span>; <span className={styles.comment}>// Show/hide icon</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Custom styling properties</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>customColors</span>?: <span className={styles.component}>CustomAlertColors</span>; <span className={styles.comment}>// Custom colors for all vision modes</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>style</span>?: <span className={styles.component}>React.CSSProperties</span>; <span className={styles.comment}>// Inline styles</span><br/>
               {'}'}
             </code>
           </div>
@@ -750,6 +800,271 @@ function Demo() {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>title</span><span className={styles.operator}>=</span><span className={styles.string}>'High Contrast Mode'</span><br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximum contrast for optimal accessibility.<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className={styles.component}>Alert</span>&gt;<br/>
+              &nbsp;&nbsp;);<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors</h3>
+        <p>Complete customization of alert colors across all color vision modes. Each vision mode has five customizable colors for total design control.</p>
+        
+        <h3>Custom Colors Interface</h3>
+        <p>The <code>customColors</code> property allows you to define custom colors for all color vision accessibility modes:</p>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomAlertColors Interface</span>
+            </div>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>interface</span> <span className={styles.component}>CustomAlertColors</span> {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Background color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Border color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Text color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultIconColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Icon color</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>defaultTitleColor</span>: <span className={styles.keyword}>string</span>; <span className={styles.comment}>// Title color</span><br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors (Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaIconColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>protanopiaTitleColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors (Most Common Red-Green Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaIconColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>deuteranopiaTitleColor</span>: <span className={styles.keyword}>string</span>;<br/><br/>
+
+              &nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors (Blue-Yellow Blindness)</span><br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBg</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaBorder</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaIconColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              &nbsp;&nbsp;<span className={styles.property}>tritanopiaTitleColor</span>: <span className={styles.keyword}>string</span>;<br/>
+              {'}'}
+            </code>
+          </div>
+        </div>
+
+        <h3>Custom Colors Example</h3>
+        <p>Define a custom color palette to create alerts with completely custom styling across all accessibility modes:</p>
+        <div className={styles.centered}>
+          <Alert 
+            title='Custom Purple Alert'
+            variant='custom'          // ← Agregado
+            colorVision='normal'
+            customColors={{
+              defaultBg: '#F3E8FF',
+              defaultBorder: '#E9D5FF',
+              defaultColor: '#6B21A8',
+              defaultIconColor: '#A855F7',
+              defaultTitleColor: '#581C87',
+              protanopiaBg: '#FEF3C7',
+              protanopiaBorder: '#FDE68A',
+              protanopiaColor: '#92400E',
+              protanopiaIconColor: '#F59E0B',
+              protanopiaTitleColor: '#78350F',
+              deuteranopiaBg: '#DBEAFE',
+              deuteranopiaBorder: '#BFDBFE',
+              deuteranopiaColor: '#1E40AF',
+              deuteranopiaIconColor: '#3B82F6',
+              deuteranopiaTitleColor: '#1E3A8A',
+              tritanopiaBg: '#F5F3FF',
+              tritanopiaBorder: '#EDE9FE',
+              tritanopiaColor: '#4C1D95',
+              tritanopiaIconColor: '#8B5CF6',
+              tritanopiaTitleColor: '#3C0F7B'
+            }}
+          >
+            Purple custom alert accessible to colorblind users
+          </Alert>
+        </div>
+        <div className={styles.centered}>
+          <Alert 
+            title='Custom Blue Alert'
+            variant='custom'
+            colorVision='protanopia'
+            dismissible
+            
+            customColors={{
+              defaultBg: '#EFF6FF',
+              defaultBorder: '#DBEAFE',
+              defaultColor: '#0C4A6E',
+              defaultIconColor: '#0284C7',
+              defaultTitleColor: '#082F49',
+              protanopiaBg: '#FEFCE8',
+              protanopiaBorder: '#FACC15',
+              protanopiaColor: '#713F12',
+              protanopiaIconColor: '#CA8A04',
+              protanopiaTitleColor: '#422006',
+              deuteranopiaBg: '#F0FDF4',
+              deuteranopiaBorder: '#BBF7D0',
+              deuteranopiaColor: '#166534',
+              deuteranopiaIconColor: '#22C55E',
+              deuteranopiaTitleColor: '#15803D',
+              tritanopiaBg: '#EFF6FF',
+              tritanopiaBorder: '#DBEAFE',
+              tritanopiaColor: '#0C4A6E',
+              tritanopiaIconColor: '#0284C7',
+              tritanopiaTitleColor: '#082F49'
+            }}
+          >
+            Blue custom alert with colorblind support
+          </Alert>
+        </div>
+        <div className={styles.centered}>
+          <Alert 
+            title='Custom Green Alert'
+            variant='custom'
+            colorVision='normal'
+            customColors={{
+              defaultBg: '#F0FDF4',
+              defaultBorder: '#BBAC34',
+              defaultColor: '#166534',
+              defaultIconColor: '#22C55E',
+              defaultTitleColor: '#15803D',
+              protanopiaBg: '#FEF3C7',
+              protanopiaBorder: '#FCD34D',
+              protanopiaColor: '#92400E',
+              protanopiaIconColor: '#FBBF24',
+              protanopiaTitleColor: '#78350F',
+              deuteranopiaBg: '#DBEAFE',
+              deuteranopiaBorder: '#BFDBFE',
+              deuteranopiaColor: '#1E40AF',
+              deuteranopiaIconColor: '#3B82F6',
+              deuteranopiaTitleColor: '#1E3A8A',
+              tritanopiaBg: '#F0FDF4',
+              tritanopiaBorder: '#BBF7D0',
+              tritanopiaColor: '#166534',
+              tritanopiaIconColor: '#22C55E',
+              tritanopiaTitleColor: '#15803D'
+            }}
+          >
+            Green custom alert for all vision types
+          </Alert>
+        </div>
+        <div className={styles.centered}>
+          <Alert 
+            title='Custom Orange Alert'
+            variant='custom'
+            colorVision='normal'
+            customColors={{
+              defaultBg: '#FEF3C7',
+              defaultBorder: '#FCD34D',
+              defaultColor: '#92400E',
+              defaultIconColor: '#F59E0B',
+              defaultTitleColor: '#78350F',
+              protanopiaBg: '#FEF3C7',
+              protanopiaBorder: '#FDE68A',
+              protanopiaColor: '#92400E',
+              protanopiaIconColor: '#F59E0B',
+              protanopiaTitleColor: '#78350F',
+              deuteranopiaBg: '#DBEAFE',
+              deuteranopiaBorder: '#BFDBFE',
+              deuteranopiaColor: '#1E40AF',
+              deuteranopiaIconColor: '#3B82F6',
+              deuteranopiaTitleColor: '#1E3A8A',
+              tritanopiaBg: '#F5F3FF',
+              tritanopiaBorder: '#EDE9FE',
+              tritanopiaColor: '#4C1D95',
+              tritanopiaIconColor: '#8B5CF6',
+              tritanopiaTitleColor: '#3C0F7B'
+            }}
+          >
+            Orange custom alert with accessibility features
+          </Alert>
+        </div>
+        <div className={styles.centered}>
+          <Alert 
+            title='Custom Pink Alert'
+            variant='custom'
+            colorVision='normal'
+            dismissible
+            customColors={{
+              defaultBg: '#FDF2F8',
+              defaultBorder: '#FBCFE8',
+              defaultColor: '#831843',
+              defaultIconColor: '#EC4899',
+              defaultTitleColor: '#500724',
+              protanopiaBg: '#FEFCE8',
+              protanopiaBorder: '#FACC15',
+              protanopiaColor: '#713F12',
+              protanopiaIconColor: '#CA8A04',
+              protanopiaTitleColor: '#422006',
+              deuteranopiaBg: '#F0FDF4',
+              deuteranopiaBorder: '#BBF7D0',
+              deuteranopiaColor: '#166534',
+              deuteranopiaIconColor: '#22C55E',
+              deuteranopiaTitleColor: '#15803D',
+              tritanopiaBg: '#EFF6FF',
+              tritanopiaBorder: '#DBEAFE',
+              tritanopiaColor: '#0C4A6E',
+              tritanopiaIconColor: '#0284C7',
+              tritanopiaTitleColor: '#082F49'
+            }}
+          >
+            Pink custom alert supporting all color vision types
+          </Alert>
+        </div>
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeHeaderLeft}>
+              <div className={styles.codeIcon}>TS</div>
+              <span>CustomColorsDemo.tsx</span>
+            </div>
+            <button className={styles.copyButton} onClick={() => copyToClipboard(customColorsCodeString, 'customColors')}>
+              {copiedButton === 'customColors' ? 'Copied!' : 'Copy'}
+            </button>
+          </div>
+          <div className={styles.code}>
+            <code>
+              <span className={styles.keyword}>import</span> {'{'} <span className={styles.component}>Alert</span> {'}'} <span className={styles.keyword}>from</span> <span className={styles.string}>'neo-ram-prisma'</span>;<br/>
+              <span className={styles.keyword}>import</span> <span className={styles.string}>'neo-ram-prisma/style.css'</span>;<br/><br/>
+              <span className={styles.keyword}>function</span> <span className={styles.function}>Demo</span>() {'{'}<br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>const</span> <span className={styles.component}>customAlertColors</span> <span className={styles.operator}>=</span> {'{'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Normal vision colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBg</span>: <span className={styles.string}>'#e8f4f8'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultBorder</span>: <span className={styles.string}>'#0099cc'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultColor</span>: <span className={styles.string}>'#003366'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultIconColor</span>: <span className={styles.string}>'#0066aa'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>defaultTitleColor</span>: <span className={styles.string}>'#001a33'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Protanopia colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBg</span>: <span className={styles.string}>'#f0f0e8'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaBorder</span>: <span className={styles.string}>'#666633'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaColor</span>: <span className={styles.string}>'#333322'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaIconColor</span>: <span className={styles.string}>'#555544'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>protanopiaTitleColor</span>: <span className={styles.string}>'#222211'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Deuteranopia colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBg</span>: <span className={styles.string}>'#f5f0e8'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaBorder</span>: <span className={styles.string}>'#996633'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaColor</span>: <span className={styles.string}>'#443322'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaIconColor</span>: <span className={styles.string}>'#774411'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>deuteranopiaTitleColor</span>: <span className={styles.string}>'#221100'</span>,<br/><br/>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.comment}>// Tritanopia colors</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBg</span>: <span className={styles.string}>'#e8eeef'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaBorder</span>: <span className={styles.string}>'#336699'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaColor</span>: <span className={styles.string}>'#1a3a4d'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaIconColor</span>: <span className={styles.string}>'#004477'</span>,<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>tritanopiaTitleColor</span>: <span className={styles.string}>'#001122'</span>,<br/>
+              &nbsp;&nbsp;{'}'};<br/><br/>
+              &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.component}>Alert</span> <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>variant</span><span className={styles.operator}>=</span><span className={styles.string}>'custom'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>title</span><span className={styles.operator}>=</span><span className={styles.string}>'Custom Colors'</span><br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.property}>customColors</span><span className={styles.operator}>=</span>{'{'}customAlertColors{'}'}<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This alert uses completely custom colors!<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className={styles.component}>Alert</span>&gt;<br/>
               &nbsp;&nbsp;);<br/>
               {'}'}

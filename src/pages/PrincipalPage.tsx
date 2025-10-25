@@ -45,7 +45,7 @@ function PrincipalPage({ onNavigate }: PrincipalPageProps) {
         <h1>How start to use</h1>
         <pre className={styles.codeblock}>
           <code>
-            npm install @
+            npm install 
             <span className={styles.gradientText}>neo-ram-prisma</span>
             
           </code>

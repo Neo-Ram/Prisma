@@ -1,10 +1,5 @@
 {
     "buildCommand": "tsc -b && vite build",
     "outputDirectory": "dist",
-    "devCommand": "vite",
-    "functions": {
-        "api/**/*.ts": {
-            "runtime": "nodejs20.x"
-        }
-    }
+    "devCommand": "vite"
 }

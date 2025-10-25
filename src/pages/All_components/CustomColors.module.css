@@ -1,81 +1,134 @@
 .container{
     display: flex;
     flex-direction: column;
-    height: 75vh;
-   
+    position: fixed;
+    top: 60px;
+    left: 15%;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 0;
+    overflow: hidden;   
+    z-index: 50;
 }
 
 .chat{
     flex: 1;
     overflow-y: auto;
     display: flex;
-    flex-direction: column-reverse;
-    padding: 12px 60px 12px 40px;
+    flex-direction: column;
+    padding: 20px 40px;
+    gap: 12px;
 }
+
+.chat::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
 .message{
-   background-color: #00aaff;
+    background-color: #00aaff;
     color: #fff;
-    padding: 16px 20px;
-    border-radius: 16px 16px 16px 0;
-    margin-bottom: 14px;
+    padding: 12px 16px;
+    border-radius: 18px 18px 18px 2px;
     max-width: 70%;
-    font-size: 16px;
+    font-size: 15px;
     font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
     font-weight: 400;
-    box-shadow: 0 2px 12px rgba(52,133,221,0.15);
-    align-self: flex-start;
-    transition: box-shadow 0.2s, background 0.2s;
-}
-.messagebot{
-    background-color: #d44f89;
-    color: #fff;
-    padding: 16px 20px;
-    border-radius: 16px 16px 0 16px;
-    margin-bottom: 14px;
-    max-width: 70%;
-    font-size: 16px;
-    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-    font-weight: 400;
-    box-shadow: 0 2px 12px rgba(212,79,137,0.15);
+    box-shadow: 0 2px 12px rgba(0, 170, 255, 0.25);
     align-self: flex-end;
-    transition: box-shadow 0.2s, background 0.2s;
+    word-wrap: break-word;
+    line-height: 1.4;
+    animation: slideIn 0.3s ease-out;
 }
+
+.messagebot{
+    background: linear-gradient(135deg, #d44f89 0%, #c2185b 100%);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 18px 18px 2px 18px;
+    max-width: 70%;
+    font-size: 15px;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    font-weight: 400;
+    box-shadow: 0 2px 12px rgba(212, 79, 137, 0.25);
+    align-self: flex-start;
+    word-wrap: break-word;
+    line-height: 1.4;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .inputArea{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px 12px 20px;
-    position: fixed;
-    bottom: 0;
-    left: 15%;
-    right: 0;
-
+    padding: 12px 20px 16px;
+    gap: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    flex-shrink: 0;
 }
 
 .inputArea input{
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 16px;
-    margin-right: 10px;
-    width: 75%;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    flex: 1;
+    max-width: 500px;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    transition: all 0.2s ease;
 }
+
+.inputArea input:focus{
+    border-color: #d44f89;
+    box-shadow: 0 0 8px rgba(212, 79, 137, 0.3);
+    outline: none;
+}
+
+.inputArea input:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .inputArea button{
-    padding: 8px 12px;
-    font-size: 16px;
-    background-color: #00aaff;
+    padding: 10px 24px;
+    font-size: 15px;
+    background: linear-gradient(90deg, #d44f89 0%, #00aaff 100%);
     color: white;
     border: none;
-    border-radius: 16px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(212, 79, 137, 0.3);
 }
-.inputArea input:focus{
-    background: linear-gradient(to right, #3485dd, #d44f89);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    border-color: #3485dd;
-    outline: none;
+
+.inputArea button:hover:not(:disabled){
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 79, 137, 0.4);
+}
+
+.inputArea button:disabled{
+    opacity: 0.7;
+    cursor: not-allowed;
 }

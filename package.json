@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@mantine/carousel": "^8.3.1",
     "@mantine/core": "^8.3.1",
     "@mantine/hooks": "^8.3.1",
     "@mantinex/dev-icons": "^2.0.0",
     "@mantinex/mantine-logo": "^2.0.0",
     "@tabler/icons-react": "^3.35.0",
+    "@vercel/node": "^5.5.0",
     "embla-carousel": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
     "neo-ram-prisma": "^1.2.0",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/node": "^24.9.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",

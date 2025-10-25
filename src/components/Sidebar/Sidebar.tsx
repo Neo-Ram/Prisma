@@ -6,7 +6,7 @@ import SidebarButton from './SidebarButton';
 const sections = [
   {
     title: "IA Assistant",
-    buttons: ["Custom-colors"]
+    buttons: ["Custom Colors"]
   },
   {
     title: "Form controls",

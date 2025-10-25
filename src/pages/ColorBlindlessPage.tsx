@@ -15,7 +15,7 @@ import { useRef, useState } from 'react';
  */
 function ColorBlindnessPage() {
     // Estado: URL de la imagen original cargada
-    const [imageSrc, setImageSrc] = useState('/public/admin.jpeg');
+    const [imageSrc, setImageSrc] = useState('/admin.jpeg');
     
     // Estado: tipo de filtro actualmente aplicado (ej: 'protanopia', 'deuteranopia')
     const [activeFilter, setActiveFilter] = useState<string | null>(null);
@@ -277,7 +277,7 @@ function ColorBlindnessPage() {
                     className={activeFilter === 'tritanopia' ? styles.active : ''}
                 >
                     Simulate Tritanopia
-                </Button>
+                </Button>   
             </div>
         </>
     );

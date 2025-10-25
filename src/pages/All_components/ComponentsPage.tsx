@@ -15,8 +15,10 @@ import PaginationPage from "./PaginationPage";
 import AlertPage from "./AlertPage";
 import SpinnerPage from "./SpinnerPage";
 import TooltipPage from "./TooltipPage";
+import CustomColors from "./CustomColors";
 // Relaciono los nombres de los botones con los componentes de página
 const pageMap: Record<string, React.ReactElement> = {
+  "Custom Colors": <CustomColors />,
   Button: <ButtonPage />,
   Checkbox :  <CheckboxPage />,
   Input: <InputPage />,

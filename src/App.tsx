@@ -1,18 +1,18 @@
-import { MantineProvider } from '@mantine/core';
-import { useState } from 'react';
-import { HeaderMenu } from './components/HeaderMenu/HeaderMenu';
+import { MantineProvider } from "@mantine/core";
+import { useState } from "react";
+import { HeaderMenu } from "./components/HeaderMenu/HeaderMenu";
 import PrincipalPage from "./pages/PrincipalPage";
-import ComponentsPage from './pages/All_components/ComponentsPage';
-import ColorBlindnessPage from './pages/ColorBlindlessPage';
+import ComponentsPage from "./pages/All_components/ComponentsPage";
+import ColorBlindnessPage from "./pages/ColorBlindlessPage";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'components':
+      case "components":
         return <ComponentsPage />;
-      case 'color-blindness':
+      case "color-blindness":
         return <ColorBlindnessPage />;
       default:
         return <PrincipalPage onNavigate={setCurrentPage} />;

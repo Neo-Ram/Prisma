@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Styles from "./ComponentsPage.module.css";
@@ -20,7 +19,7 @@ import CustomColors from "./CustomColors";
 const pageMap: Record<string, React.ReactElement> = {
   "Custom Colors": <CustomColors />,
   Button: <ButtonPage />,
-  Checkbox :  <CheckboxPage />,
+  Checkbox: <CheckboxPage />,
   Input: <InputPage />,
   Radiogroup: <RadiogroupPage />,
   Select: <SelectPage />,
@@ -31,7 +30,7 @@ const pageMap: Record<string, React.ReactElement> = {
   Pagination: <PaginationPage />,
   Alert: <AlertPage />,
   Spinner: <SpinnerPage />,
-  Tooltip: <TooltipPage />
+  Tooltip: <TooltipPage />,
 };
 
 const ComponentsPage = () => {
@@ -42,9 +41,7 @@ const ComponentsPage = () => {
   return (
     <div className={Styles.container}>
       <Sidebar onSelect={setActivePage} activePage={activePage} />
-      <main className={Styles.mainContent}>
-        {pageMap[activePage]}
-      </main>
+      <main className={Styles.mainContent}>{pageMap[activePage]}</main>
     </div>
   );
 };

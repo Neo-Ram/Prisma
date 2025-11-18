@@ -1,31 +1,30 @@
-import { Burger, Container, Group } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import classes from './HeaderMenu.module.css';
-import Prisma_logo_white_mini from '../../assets/Prisma_logo_white_mini.png';
+import { Burger, Container, Group } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import classes from "./HeaderMenu.module.css";
+import Prisma_logo_white_mini from "../../assets/Prisma_logo_white_mini.png";
 
 interface HeaderMenuProps {
   onNavigate: (page: string) => void;
 }
 
 const links = [
-  { page: 'components', label: 'Components' },
-  { page: 'color-blindness', label: 'Color blindness simulator' },
-  
-  
+  { page: "components", label: "Components" },
+  { page: "color-blindness", label: "Color blindness simulator" },
+
   // 🔥 AQUÍ AGREGAS NUEVOS BOTONES DEL MENÚ:
   // { page: 'nueva-pagina', label: 'Nueva Página' },
   // { page: 'otra-pagina', label: 'Otra Página' },
-  
- // { link: '/pricing', label: 'Pricing' },
+
+  // { link: '/pricing', label: 'Pricing' },
   //{
-   // link: '#2',
-    //label: 'Support',
-    //links: [
-     // { link: '/faq', label: 'FAQ' },
-      //{ link: '/demo', label: 'Book a demo' },
-      //{ link: '/forums', label: 'Forums' },
-    //],
- // },
+  // link: '#2',
+  //label: 'Support',
+  //links: [
+  // { link: '/faq', label: 'FAQ' },
+  //{ link: '/demo', label: 'Book a demo' },
+  //{ link: '/forums', label: 'Forums' },
+  //],
+  // },
 ];
 
 export function HeaderMenu({ onNavigate }: HeaderMenuProps) {
@@ -50,10 +49,10 @@ export function HeaderMenu({ onNavigate }: HeaderMenuProps) {
       <Container size="md">
         <div className={classes.inner}>
           <img
-            src={(Prisma_logo_white_mini)}
+            src={Prisma_logo_white_mini}
             alt="Prisma Logo"
-            style={{ height: 35, cursor: 'pointer' }}
-            onClick={() => onNavigate('home')}
+            style={{ height: 35, cursor: "pointer" }}
+            onClick={() => onNavigate("home")}
           />
           <Group gap={5} visibleFrom="sm">
             {items}

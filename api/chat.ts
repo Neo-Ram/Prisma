@@ -1,25 +1,23 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { VercelRequest, VercelResponse } from "@vercel/node";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Contexto del sistema para Spectrum
-const SPECTRUM_SYSTEM_PROMPT = `Eres Spectrum, chatbot experto en daltonismo y neo-ram-prisma.
+const SPECTRUM_SYSTEM_PROMPT = `Eres Spectrum, chatbot experto en daltonismo.
 
 IDIOMA: Responde SIEMPRE en el idioma del usuario.
 
 TEMAS VÁLIDOS:
 • Daltonismo (protanopia, deuteranopia, tritanopia)
 • Accesibilidad visual y colores
-• Uso de neo-ram-prisma y customColors
 • Recomendaciones de colores para cada modo de visión
+• Si alguien te pide un color para su interfaz, dale sus variantes para protanopia, deuteranopia y tritanopia.
 
 TEMAS NO VÁLIDOS:
-• Programación general
 • Otras librerías
 • Temas no relacionados
 
-INFORMACIÓN: Usa SOLO:
+INFORMACIÓN: si es necesario hablar de una libreria habla solo de:
 1. https://www.npmjs.com/package/neo-ram-prisma
-2. https://prisma-drab.vercel.app/
 
 FORMATO DE RESPUESTA:
 - Máximo 150 palabras
@@ -37,36 +35,33 @@ SOBRE NEO-RAM-PRISMA:
 
 Personalidad: Profesional, directo, sin enredos. Tipo Gustavo Fring.`;
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse,
-) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Solo aceptar POST
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
     // Verificar que la API key exista
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      console.error('GEMINI_API_KEY no está configurada');
-      return res.status(500).json({ 
-        error: 'Internal server error',
-        message: 'API key no configurada'
+      console.error("GEMINI_API_KEY no está configurada");
+      return res.status(500).json({
+        error: "Internal server error",
+        message: "API key no configurada",
       });
     }
 
     const { message } = req.body;
 
     // Validar que el mensaje exista
-    if (!message || typeof message !== 'string') {
-      return res.status(400).json({ error: 'Message is required' });
+    if (!message || typeof message !== "string") {
+      return res.status(400).json({ error: "Message is required" });
     }
 
     // Inicializar Gemini con la API key
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Generar respuesta con el contexto de Spectrum
     const result = await model.generateContent([
@@ -83,10 +78,10 @@ export default async function handler(
 
     return res.status(200).json({ response: text });
   } catch (error) {
-    console.error('Error completo:', error);
-    return res.status(500).json({ 
-      error: 'Internal server error',
-      message: error instanceof Error ? error.message : 'Unknown error'
+    console.error("Error completo:", error);
+    return res.status(500).json({
+      error: "Internal server error",
+      message: error instanceof Error ? error.message : "Unknown error",
     });
   }
 }
